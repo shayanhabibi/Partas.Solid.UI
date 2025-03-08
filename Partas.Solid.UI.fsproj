@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <RootNamespace>Partas.Solid.UI</RootNamespace>
+        <AssemblyName>Partas.Solid.UI</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Utils.fs" />
+        <Compile Include="Components\Button.fs" />
+        <Compile Include="Components\Accordion.fs" />
+        <Compile Include="Components\Alert.fs" />
+        <Compile Include="Components\AlertDialog.fs" />
+        <Compile Include="Components\Avatar.fs" />
+        <Compile Include="Components\Badge.fs" />
+        <Compile Include="Components\Breadcrumb.fs" />
+        <Compile Include="Components\KobalteButton.fs" />
+        <Compile Include="Components\Callout.fs" />
+        <Compile Include="Components\Card.fs" />
+        <Compile Include="Components\Checkbox.fs" />
+        <Compile Include="Components\Collapsible.fs" />
+        <Compile Include="Components\Combobox.fs" />
+        <Compile Include="Components\Dialog.fs" />
+        <Compile Include="Components\Command.fs" />
+        <Compile Include="Components\ContextMenu.fs" />
+        <Compile Include="Components\Drawer.fs" />
+        <Compile Include="Components\DropdownMenu.fs" />
+        <Compile Include="Components\HoverCard.fs" />
+        <Compile Include="Components\Label.fs" />
+        <Compile Include="Components\Menubar.fs" />
+        <Compile Include="Components\NavigationMenu.fs" />
+        <Compile Include="Components\NumberField.fs" />
+        <Compile Include="Components\OtpField.fs" />
+        <Compile Include="Components\Pagination.fs" />
+        <Compile Include="Components\Popover.fs" />
+        <Compile Include="Components\RadioGroup.fs" />
+        <Compile Include="Components\Resizeable.fs" />
+        <Compile Include="Components\Select.fs" />
+        <Compile Include="Components\Separator.fs" />
+        <Compile Include="Components\Sheet.fs" />
+        <Compile Include="Components\Skeleton.fs" />
+        <Compile Include="Components\Slider.fs" />
+        <Compile Include="Components\Sonner.fs" />
+        <Compile Include="Components\Switch.fs" />
+        <Compile Include="Components\Table.fs" />
+        <Compile Include="Components\Tabs.fs" />
+        <Compile Include="Components\Text.fs" />
+        <Compile Include="Components\Timeline.fs" />
+        <Compile Include="Components\Toggle.fs" />
+        <Compile Include="Components\ToggleGroup.fs" />
+        <Compile Include="Components\Tooltip.fs" />
+        <Compile Include="Components\Sidebar.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Partas.Solid.Bindings\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Fable.Core" Version="4.5.0" />
+      <PackageReference Include="Partas.Solid" Version="0.2.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Cmdk\Partas.Solid.Cmdk.fsproj" />
+      <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Corvu\Partas.Solid.Corvu.fsproj" />
+      <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Kobalte\Partas.Solid.Kobalte.fsproj" />
+      <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Lucide\Partas.Solid.Lucide.fsproj" />
+      <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Primitives\Partas.Solid.Primitives.fsproj" />
+      <ProjectReference Include="Partas.Solid.Sonner\Partas.Solid.Sonner.fsproj" />
+    </ItemGroup>
+
+</Project>
