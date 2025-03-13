@@ -46,12 +46,12 @@ module [<Erase>] button =
 
 [<Erase>]
 type Button() =
-    inherit button()
+    inherit Kobalte.Button()
     [<Erase>]
     member val size: button.size = jsNative with get,set
     [<Erase>]
     member val variant: button.variant = jsNative with get,set
     [<SolidTypeComponent>]
     member props.constructor =
-        button(class' = button.variants({|size = props.size; variant = props.variant|}))
+        Kobalte.Button(class' = button.variants({|size = props.size; variant = props.variant|}))
             .spread props

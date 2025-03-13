@@ -22,6 +22,13 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Partas.Solid.Sonner", "Part
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Partas.Solid.Primitives", "Partas.Solid.Bindings\Partas.Solid.Primitives\Partas.Solid.Primitives.fsproj", "{00C7E25E-77FC-407A-8E67-3FA82430EA85}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Partas.Solid.UI.Playground", "Partas.Solid.UI.Playground\Partas.Solid.UI.Playground.fsproj", "{3C4D93D3-58F7-40A1-925F-42E94D5F2C07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{BC11E26F-D453-4ABB-8F29-345A28ACEA99}"
+	ProjectSection(SolutionItems) = preProject
+		package.json = package.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +71,10 @@ Global
 		{00C7E25E-77FC-407A-8E67-3FA82430EA85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00C7E25E-77FC-407A-8E67-3FA82430EA85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00C7E25E-77FC-407A-8E67-3FA82430EA85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C4D93D3-58F7-40A1-925F-42E94D5F2C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C4D93D3-58F7-40A1-925F-42E94D5F2C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C4D93D3-58F7-40A1-925F-42E94D5F2C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C4D93D3-58F7-40A1-925F-42E94D5F2C07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{17A59608-C9A8-4A80-AD39-EBB34CBCE068} = {5BFCF969-EA63-4E44-A406-DFF85C8A2F7C}

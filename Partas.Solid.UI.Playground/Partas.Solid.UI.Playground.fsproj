@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="vite.config.mts" />
+        <Content Include="index.css" />
+        <Content Include="index.html" />
+        <Content Include="postcss.config.js" />
+        <Content Include="tailwind.config.js" />
+        <Compile Include="Codeblock.fs" />
+        <Compile Include="Components\PageAccordion.fs" />
+        <Compile Include="Components\PageAlert.fs" />
+        <Compile Include="Components\PageAlertDialog.fs" />
+        <Compile Include="Components\PageAvatar.fs" />
+        <Compile Include="Components\PageBadge.fs" />
+        <Compile Include="Components\PageBreadcrumb.fs" />
+        <Compile Include="Components\PageButton.fs" />
+        <Compile Include="Components\PageCallout.fs" />
+        <Compile Include="Components\PageCard.fs" />
+        <Compile Include="Components\PageCheckbox.fs" />
+        <Compile Include="Components\PageCollapsible.fs" />
+        <Compile Include="Components\PageCombobox.fs" />
+        <Compile Include="Components\PageCommand.fs" />
+        <Compile Include="Components\PageDialog.fs" />
+        <Compile Include="Components\PageContextMenu.fs" />
+        <Compile Include="Components\PageDrawer.fs" />
+        <Compile Include="Components\PageDropdownMenu.fs" />
+        <Compile Include="Components\PageHoverCard.fs" />
+        <Compile Include="Components\PageLabel.fs" />
+        <Compile Include="Components\PageMenubar.fs" />
+        <Compile Include="Components\PageNavigationMenu.fs" />
+        <Compile Include="Components\PageNumberField.fs" />
+        <Compile Include="Components\PageOtpField.fs" />
+        <Compile Include="Components\PagePagination.fs" />
+        <Compile Include="Components\PagePopover.fs" />
+        <Compile Include="Components\PageRadioGroup.fs" />
+        <Compile Include="Components\PageResizeable.fs" />
+        <Compile Include="Components\PageSelect.fs" />
+        <Compile Include="Components\PageBarList.fs" />
+        <Compile Include="Components\PageDeltaBar.fs" />
+        <Compile Include="Components\PageProgress.fs" />
+        <Compile Include="App.fs" />
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Partas.Solid" Version="0.2.14" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Partas.Solid.UI.fsproj" />
+    </ItemGroup>
+
+</Project>

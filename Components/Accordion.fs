@@ -19,13 +19,14 @@ type AccordionTrigger() =
     inherit Accordion.Trigger()
     [<SolidTypeComponent>]
     member props.constructor =
-        Accordion.Header(class' = Lib.cn [|
-            "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-expanded]>svg]:rotate-180"
-            props.class'
-        |]).spread props {
-            props.children
-            Lucide.ChevronDown(strokeWidth = 2, class' = "size-4 shrink-0 transition-transform duration-300")
-            div(class' = props.class')
+        Accordion.Header(class' = "flex") {
+            Accordion.Trigger(class' = Lib.cn [|
+                "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-expanded]>svg]:rotate-180"
+                props.class'
+            |]).spread props {
+                props.children
+                Lucide.ChevronDown(strokeWidth = 2, class' = "size-4 shrink-0 transition-transform duration-300")
+            }
         }
 
 [<Erase>]
@@ -47,4 +48,4 @@ type Accordion() =
     inherit Kobalte.Accordion()
     [<SolidTypeComponent>]
     member props.constructor =
-        Accordion().spread props
+        Kobalte.Accordion().spread props

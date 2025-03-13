@@ -31,7 +31,7 @@ type CommandDialog() =
         }
 
 [<Erase>]
-type CommandInput() =
+type CommandInputs() =
     inherit Command.Input()
     [<SolidTypeComponent>]
     member props.constructor =
@@ -44,7 +44,7 @@ type CommandInput() =
         }
 
 [<Erase>]
-type CommandList() =
+type CommandLists() =
     inherit Command.List()
     [<SolidTypeComponent>]
     member props.constructor =
@@ -54,7 +54,7 @@ type CommandList() =
         |]).spread(props)
 
 [<Erase>]
-type CommandEmpty() =
+type CommandEmptys() =
     inherit Command.Empty()
     [<SolidTypeComponent>]
     member props.constructor =
@@ -62,7 +62,7 @@ type CommandEmpty() =
         ).spread(props)
     
 [<Erase>]
-type CommandGroup() =
+type CommandGroups() =
     inherit Command.Group()
     [<SolidTypeComponent>]
     member props.constructor =
@@ -72,7 +72,7 @@ type CommandGroup() =
         |]).spread(props)
 
 [<Erase>]
-type CommandSeparator() =
+type CommandSeparators() =
     inherit Command.Separator()
     [<SolidTypeComponent>]
     member props.constructor =
@@ -82,7 +82,7 @@ type CommandSeparator() =
         |]).spread(props)
     
 [<Erase>]
-type CommandItem() =
+type CommandItems() =
     inherit Command.Item()
     [<SolidTypeComponent>]
     member props.constructor =
@@ -92,7 +92,7 @@ type CommandItem() =
         |]).spread(props)
     
 [<Erase>]
-type CommandShortcut() =
+type CommandShortcuts() =
     inherit span()
     [<SolidTypeComponent>]
     member props.constructor =

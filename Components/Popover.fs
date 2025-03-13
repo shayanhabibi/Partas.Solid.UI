@@ -11,14 +11,14 @@ type PopoverTrigger() =
     member props.constructor = Popover.Trigger().spread props
 
 [<Erase>]
-type PopoverContent() =
-    inherit Popover.Content()
-    [<SolidTypeComponent>]
-    member props.constructor = Popover.Content(gutter = 4).spread props
-    
-[<Erase>]
 type Popover() =
     inherit Kobalte.Popover()
+    [<SolidTypeComponent>]
+    member props.constructor = Kobalte.Popover(gutter = 4).spread props
+    
+[<Erase>]
+type PopoverContent() =
+    inherit Popover.Content()
     [<SolidTypeComponent>]
     member props.constructor =
         Popover.Portal() {

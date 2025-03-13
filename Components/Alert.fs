@@ -18,8 +18,8 @@ module alert =
                defaultVariants = {| variant = "default" |} |}
     
     type [<Erase>] variant =
-        static member inline ``default`` = "default"
-        static member inline destructive = "destructive"
+        static member inline ``default``: variant = !!"default"
+        static member inline destructive: variant = !!"destructive"
 
 [<Erase>]
 type Alert() =

@@ -7,6 +7,7 @@ open Fable.Core.JsInterop
 [<Erase>]
 type Combobox() =
     inherit Kobalte.Combobox()
+    // member val options: 'T[] = jsNative with get,set
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.Combobox().spread props
@@ -27,7 +28,7 @@ type ComboboxItem() =
     inherit Combobox.Item()
     [<SolidTypeComponent>]
     member props.constructor =
-        Kobalte.Combobox.Item(class'= Lib.cn [|
+        Combobox.Item(class' = Lib.cn [|
             "relative flex cursor-default select-none items-center justify-between rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:opacity-50"
             props.class'
         |]).spread(props)
@@ -37,7 +38,7 @@ type ComboboxItemIndicator() =
     [<SolidTypeComponent>]
     member props.constructor =
         Combobox.ItemIndicator().spread(props) {
-             if unbox props.children then props.children else Lucide.Lucide.Check(class' = "size-4", strokeWidth = 2) 
+             props.children &&= Lucide.Lucide.Check(class' = "size-4", strokeWidth = 2) 
         }
 [<Erase>]
 type ComboboxSection() =

@@ -37,6 +37,13 @@ type Menubar() =
             "flex h-10 items-center space-x-1 rounded-md border bg-background p-1"
             props.class'
         |]).spread props
+
+[<Erase>]
+type MenubarMenu() =
+    inherit Kobalte.Menubar.Menu()
+    [<SolidTypeComponent>]
+    member props.constructor = Menubar.Menu(gutter = 8).spread props
+
 [<Erase>]
 type MenubarTrigger() =
     inherit Menubar.Trigger()

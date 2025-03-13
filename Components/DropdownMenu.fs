@@ -3,11 +3,12 @@
 open Partas.Solid
 open Partas.Solid.Kobalte
 open Fable.Core
-
+open Partas.Solid.Polymorphism
 
 [<Erase>]
 type DropdownMenuTrigger() =
     inherit DropdownMenu.Trigger()
+    interface Polymorph
     [<SolidTypeComponent>]
     member props.constructor = DropdownMenu.Trigger().spread props
     
@@ -22,6 +23,17 @@ type DropdownMenuSub() =
     inherit DropdownMenu.Sub()
     [<SolidTypeComponent>]
     member props.constructor = DropdownMenu.Sub().spread props
+[<Erase>]
+type DropdownMenuSubContent() =
+    inherit DropdownMenu.SubContent()
+    [<SolidTypeComponent>]
+    member props.constructor =
+        DropdownMenu.SubContent(
+            class' = Lib.cn [|
+                "z-50 min-w-32 origin-(var(--kb-menu-content-transform-origin)) overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md animate-in"
+                props.class'
+            |]
+        ).spread props
     
 [<Erase>]
 type DropdownMenuGroup() =
@@ -48,9 +60,7 @@ type DropdownMenuContent() =
     member props.constructor =
         DropdownMenuPortal() {
             DropdownMenu.Content(class' = Lib.cn [|
-                "z-50 min-w-32 origin-[var(--kb-menu-content-transform-origin)] animate-content-hide
-                overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md
-                data-[expanded]:animate-content-show"
+                "z-50 min-w-32 origin-[var(--kb-menu-content-transform-origin)] animate-content-hide overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[expanded]:animate-content-show"
                 props.class'
             |]).spread(props)
         }
@@ -60,10 +70,10 @@ type DropdownMenuItem() =
     [<SolidTypeComponent>]
     member props.constructor =
         DropdownMenu.Item(class'= Lib.cn [|
-            "relative flex cursor-default select-none items-center
-            gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors
-            focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none
-            data-[disabled]:opacity-50"
+            "relative flex cursor-default select-none items-center"
+            "gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors"
+            "focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none"
+            "data-[disabled]:opacity-50"
             props.class'
         |]).spread(props)
 [<Erase>]
@@ -92,3 +102,65 @@ type DropdownMenuSeparator() =
             props.class'
         |]).spread(props)
 
+
+[<Erase>]
+type DropdownMenuSubTrigger() =
+    inherit DropdownMenu.SubTrigger()
+    interface Polymorph
+    [<SolidTypeComponentAttribute>]
+    member props.constructor =
+        DropdownMenu.SubTrigger(
+            class' = Lib.cn [|
+                "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent"
+                props.class'
+            |]
+        ).spread(props) {
+            props.children
+            Lucide.Lucide.ChevronRight(strokeWidth = 2, class' = "size-4 ml-auto")
+        }
+
+[<Erase>]
+type DropdownMenuCheckboxItem() =
+    inherit DropdownMenu.CheckboxItem()
+    interface Polymorph
+    [<SolidTypeComponentAttribute>]
+    member props.constructor =
+        DropdownMenu.CheckboxItem(
+            class' = Lib.cn [|
+                "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+                props.class'
+            |]
+        ).spread props {
+            span(class' = "absolute left-2 flex size-3.5 items-center justify-center") {
+                DropdownMenu.ItemIndicator() {
+                    Lucide.Lucide.Check(class' = "size-4", strokeWidth = 2)
+                }
+            }
+            props.children
+        }
+
+[<Erase>]
+type DropdownMenuGroupLabel() =
+    inherit DropdownMenu.GroupLabel()
+    [<SolidTypeComponent>]
+    member props.constructor = DropdownMenu.GroupLabel(class' = Lib.cn [| "px-2 py-1.5 text-sm font-semibold" ; props.class' |]).spread props
+    
+
+[<Erase>]
+type DropdownMenuRadioItem() =
+    inherit DropdownMenu.RadioItem()
+    [<SolidTypeComponent>]
+    member props.constructor =
+        DropdownMenu.RadioItem(
+            class' = Lib.cn [|
+                "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+                props.class'
+            |]
+            ).spread props {
+            span(class' = "absolute left-2 flex size-3.5 items-center justify-center") {
+                DropdownMenu.ItemIndicator() {
+                    Lucide.Lucide.Circle(class' = "size-4 fill-current", strokeWidth = 2)
+                }
+            }
+            props.children
+        }

@@ -1,5 +1,6 @@
 ﻿namespace Partas.Solid.UI
 
+open Partas.Solid.Polymorphism
 open Browser
 open Fable.Core.JS
 open Partas.Solid
@@ -114,15 +115,15 @@ type SidebarProvider() =
                 setOpenMobile = setOpenMobile
                 toggleSidebar = toggleSidebar
             |}
-        
+        let style = mergeProps([| createObj [
+                 "--sidebar-width" ==> sidebarWidth
+                 "--sidebar-width-icon" ==> sidebarWidthIcon
+             ]; props.style |])
         Context.SidebarContext(!!contextValue) {
             div(class' = Lib.cn [|
                 "group/sidebar-wrapper flex min-h-svh w-full text-sidebar-foreground has-[[data-variant=inset]]:bg-sidebar"
                 props.class'
-            |]).style'( createObj [
-                "--sidebar-width" ==> sidebarWidth
-                "--sidebar-width-icon" ==> sidebarWidthIcon
-            ] ) // todo spread
+            |]).style'( style )
                 .spread props
                 { props.children }
         }
@@ -130,8 +131,11 @@ type SidebarProvider() =
 [<Erase>]
 type Sidebar() =
     inherit div()
+    [<Erase>]
     member val side: sidebar.Side = unbox null with get,set
+    [<Erase>]
     member val variant: sidebar.Variant = unbox null with get,set
+    [<Erase>]
     member val collapsible: sidebar.Collapsible = unbox null with get,set
     [<SolidTypeComponent>]
     member props.constructor =
@@ -144,7 +148,7 @@ type Sidebar() =
             Match(when' = (props.collapsible = sidebar.None)) {
                 
                 div(class' = Lib.cn [|
-                    "test flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground"
+                    "flex h-full w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground"
                     props.class'
                 |]).spread props
                     { props.children }
@@ -155,47 +159,59 @@ type Sidebar() =
                 Sheet( open' = openMobile(), onOpenChange = !!setOpenMobile )
                     .spread props {
                         SheetContent(
-                            class' = "w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden",
+                            class' = "w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden",
                             position = !!props.side
                             ).data("sidebar", !!sidebar.Sidebar)
                             .data("mobile", "true")
                             .style'(createObj [ "--sidebar-width" ==> sidebarWidthMobile ])
-                            { div(class' = "flex size-full flex-col") { props.children } }
+                            { div(class' = "flex h-full w-full flex-col") { props.children } }
                     }
                 
             }
             Match(when' = (isMobile() |> not)) {
-                // gap handler on desktop
                 div(
-                class' = Lib.cn [|
-                    "relative h-svh w-[--sidebar-width] bg-transparent transition-[width] duration-200 ease-linear"
-                    "group-data-[collapsible=offcanvas]:w-0"
-                    "group-data-[side=right]:rotate-180"
-                    if (props.variant = sidebar.Floating || props.variant = sidebar.Inset) then
-                        "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]"
-                    else "group-data-[collapsible=icon]:w-[--sidebar-width-icon]"
-                |]
-                )
-                
-                div(
-                class' = Lib.cn [|
-                    "fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] duration-200 ease-linear md:flex"
-                    if props.side = sidebar.Left then
-                        "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
-                    else "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]"
-                    // Adjust the padding for floating and inset variants.
-                    if props.variant = sidebar.Floating || props.variant = sidebar.Inset then
-                        "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]"
-                    else "group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l"
-                    props.class' 
-                |]
-                    ).spread props
+                    class' = "group peer hidden md:block text-sidebar-foreground"
+                )   .data("state", !!state())
+                    .data(
+                        "collapsible",
+                        if state() = Collapsed then !!props.collapsible else ""
+                        )
+                    .data("variant", !!props.variant)
+                    .data("side", !!props.side)
                     {
+                        
+                        // gap handler on desktop
                         div(
-                            class' = "flex size-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
-                        ).data("sidebar", !!sidebar.Sidebar)
-                            { props.children }
-                    }
+                        class' = Lib.cn [|
+                            "duration-200 relative h-svh w-(--sidebar-width) bg-transparent transition-[width] ease-linear"
+                            "group-data-[collapsible=offcanvas]:w-0"
+                            "group-data-[side=right]:rotate-180"
+                            if (props.variant = sidebar.Floating || props.variant = sidebar.Inset) then
+                                "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]"
+                            else "group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
+                        |]
+                        )
+                        
+                        div(
+                        class' = Lib.cn [|
+                            "fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex"
+                            if props.side = sidebar.Left then
+                                "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
+                            else "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]"
+                            // Adjust the padding for floating and inset variants.
+                            if props.variant = sidebar.Floating || props.variant = sidebar.Inset then
+                                "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]"
+                            else "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l"
+                            props.class' 
+                        |]
+                            ).spread props
+                            {
+                                div(
+                                    class' = "flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
+                                ).data("sidebar", !!sidebar.Sidebar)
+                                    { props.children }
+                            }
+                }
             }
             
         }
@@ -203,12 +219,13 @@ type Sidebar() =
 [<Erase>]
 type SidebarTrigger() =
     inherit button()
+    interface Polymorph
     [<Erase>] member val onClick: MouseEvent -> unit = unbox null with get,set
     [<Erase>] member val side: sidebar.Side = unbox null with get,set
     [<Erase>] member val variant: sidebar.Variant = unbox null with get,set
     [<Erase>] member val collapsible: sidebar.Collapsible = unbox null with get,set
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         let toggleSidebar = Context.useSidebar().toggleSidebar
         Button( variant = button.variant.ghost,
                 size = button.size.icon,
@@ -227,7 +244,7 @@ type SidebarTrigger() =
 type SidebarRail() =
     inherit button()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         let toggleSidebar = Context.useSidebar().toggleSidebar
         button(
             title = "Toggle Sidebar",
@@ -252,7 +269,7 @@ type SidebarRail() =
 type SidebarInset() =
     inherit main()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         main(
             class' =
                 Lib.cn [|
@@ -266,7 +283,7 @@ type SidebarInset() =
 type SidebarInput() =
     inherit TextFieldInput()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         TextField()
             {
                 TextFieldInput( class' = Lib.cn [| "h-8 w-full bg-background shadow-none focus-visible:ring-2 focus-visible:ring-sidebar-ring"; props.class'|])
@@ -278,7 +295,7 @@ type SidebarInput() =
 type SidebarHeader() =
     inherit div()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         div(class' = Lib.cn [| "flex flex-col gap-2 p-2"; props.class' |])
             .data("sidebar", "header")
             .spread(props)
@@ -287,7 +304,7 @@ type SidebarHeader() =
 type SidebarFooter() =
     inherit div()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         div(class' = Lib.cn [| "flex flex-col gap-2 p-2"; props.class' |])
             .data("sidebar", "footer")
             .spread(props)
@@ -296,7 +313,7 @@ type SidebarFooter() =
 type SidebarSeparator() =
     inherit Separator()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         Separator(class' = Lib.cn [| "mx-2 w-auto bg-sidebar-border"
                                      props.class' |])
             .spread props
@@ -305,7 +322,7 @@ type SidebarSeparator() =
 type SidebarContent() =
     inherit div()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         div(class' = Lib.cn [|
             "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden"
             props.class'
@@ -315,7 +332,7 @@ type SidebarContent() =
 type SidebarGroup() =
     inherit div()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         div(class' = Lib.cn [| "relative flex w-full min-w-0 flex-col p-2"
                                props.class' |])
             .data("sidebar", "group")
@@ -325,7 +342,7 @@ type SidebarGroup() =
 type SidebarGroupLabel() =
     inherit div()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         div(
             class' = Lib.cn [|
                 "flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 outline-none ring-sidebar-ring transition-[margin,opa] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0"
@@ -339,7 +356,7 @@ type SidebarGroupLabel() =
 type SidebarGroupAction() =
     inherit button()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         button(
             class' = Lib.cn [|
                 "absolute right-3 top-3.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0"
@@ -355,7 +372,7 @@ type SidebarGroupAction() =
 type SidebarGroupContent() =
     inherit div()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         div(class' = Lib.cn [| "w-full text-sm"; props.class' |])
             .data("sidebar", "group-content")
             .spread props
@@ -364,7 +381,7 @@ type SidebarGroupContent() =
 type SidebarMenu() =
     inherit ul()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         ul(class' = Lib.cn [|
             "flex w-full min-w-0 flex-col gap-1"
             props.class'
@@ -375,7 +392,7 @@ type SidebarMenu() =
 type SidebarMenuItem() =
     inherit li()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         li(class' = Lib.cn [|
             "group/menu-item relative"
             props.class'
@@ -417,20 +434,21 @@ open sidebarMenuButton
 
 [<Erase>]
 type SidebarMenuButton() =
-    inherit button()
+    inherit KobalteButton()
+    interface Polymorph
     [<Erase>] member val isActive: bool = unbox null with get,set
     [<Erase>] member val tooltip: string = unbox null with get,set
     [<Erase>] member val variant: sidebarMenuButton.Variant = unbox null with get,set
     [<Erase>] member val size: sidebarMenuButton.Size = unbox null with get,set
     [<SolidTypeComponentAttribute>]
-    member private props.constructor =
+    member props.constructor =
         props.isActive <- false
         props.variant <- Variant.Default
         props.size <- Size.Default
         let ctx = Context.useSidebar()
         let (isMobile, state) = (ctx.isMobile, ctx.state)
         let bakedButton =
-            button(
+            Button(
                 class' = Lib.cn [|
                     variants({| variant = props.variant ; size = props.size |})
                     props.class'
@@ -452,7 +470,7 @@ type SidebarMenuAction() =
     inherit button()
     [<Erase>] member val showOnHover: bool = unbox null with get,set
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         props.showOnHover <- false
         
         button(
@@ -474,7 +492,7 @@ type SidebarMenuAction() =
 type SidebarMenuBadge() =
     inherit div()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         div(
             class' = Lib.cn [|
                 "pointer-events-none absolute right-1 flex h-5 min-w-5 select-none items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums text-sidebar-foreground"
@@ -493,7 +511,7 @@ type SidebarMenuSkeleton() =
     inherit div()
     [<Erase>] member val showIcon: bool = unbox null with get,set
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         let width = createMemo( fun () -> $"{Math.floor( Math.random() * 40. ) + 50.}%%")
         
         div(class' = Lib.cn [| "flex h-8 items-center gap-2 rounded-md px-2"
@@ -512,7 +530,7 @@ type SidebarMenuSkeleton() =
 type SidebarMenuSub() =
     inherit ul()
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         ul(class' = Lib.cn [|
             "mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l border-sidebar-border px-2.5 py-0.5"
             "group-data-[collapsible=icon]:hidden"
@@ -524,7 +542,7 @@ type SidebarMenuSub() =
 type SidebarMenuSubItem() =
     inherit li()
     [<SolidTypeComponent>]
-    member private props.constructor = li().spread props
+    member props.constructor = li().spread props
 
 [<Erase>]
 module sidebarMenuSubButton =
@@ -541,7 +559,7 @@ type SidebarMenuSubButton() =
     [<Erase>] member val size: Size = unbox null with get,set
     [<Erase>] member val isActive: bool = unbox null with get,set
     [<SolidTypeComponent>]
-    member private props.constructor =
+    member props.constructor =
         props.size <- Medium
         a(
             class' = Lib.cn [|

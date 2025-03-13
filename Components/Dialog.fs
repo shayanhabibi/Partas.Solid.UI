@@ -37,7 +37,7 @@ type DialogOverlay() =
         Dialog.Overlay(
             class' =
                 Lib.cn
-                    [| "fixed inset-0 z-50 bg-background/80 backdrop-blur-sm data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0"
+                    [| "fixed inset-0 z-50 bg-background/80 data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0"
                        props.class' |]
         ).spread(props)
     
@@ -55,6 +55,7 @@ type DialogContent() =
                 |]
             ).spread(props)
                 {
+                    props.children
                     Dialog.CloseButton(class' = "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[expanded]:bg-accent data-[expanded]:text-muted-foreground" )
                         { Lucide.Lucide.X(class' = "size-4"); SrSpan() {"Close"} }
                 }

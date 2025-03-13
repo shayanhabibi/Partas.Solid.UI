@@ -8,13 +8,13 @@ module callout =
     let variants = 
         Lib.cva
             "rounded-md border-l-4 p-2 pl-4"
-            {| variants =
-                {| variant =
-                    {| ``default`` = "border-info-foreground bg-info text-info-foreground"
-                       success = "border-success-foreground bg-success text-success-foreground"
-                       warning = "border-warning-foreground bg-warning text-warning-foreground"
-                       error = "border-error-foreground bg-error text-error-foreground" |} |}
-               defaultVariants = {| variant = "default" |} |}
+                {| variants =
+                    {| variant =
+                        {| ``default`` = "border-info-foreground bg-info text-info-foreground"
+                           success = "border-success-foreground bg-success text-success-foreground"
+                           warning = "border-warning-foreground bg-warning text-warning-foreground"
+                           error = "border-error-foreground bg-error text-error-foreground" |} |}
+                   defaultVariants = {| variant = "default" |} |}
     
     [<StringEnum>]
     type variant =

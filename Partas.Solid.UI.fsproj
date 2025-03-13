@@ -52,6 +52,10 @@
         <Compile Include="Components\ToggleGroup.fs" />
         <Compile Include="Components\Tooltip.fs" />
         <Compile Include="Components\Sidebar.fs" />
+        <Compile Include="Components\Visualisations\BarList.fs" />
+        <Compile Include="Components\Visualisations\DeltaBar.fs" />
+        <Compile Include="Components\Progress.fs" />
+        <Content Include="package.json" />
     </ItemGroup>
 
     <ItemGroup>
@@ -60,7 +64,7 @@
 
     <ItemGroup>
       <PackageReference Include="Fable.Core" Version="4.5.0" />
-      <PackageReference Include="Partas.Solid" Version="0.2.6" />
+      <PackageReference Include="Partas.Solid" Version="0.2.14" />
     </ItemGroup>
 
     <ItemGroup>

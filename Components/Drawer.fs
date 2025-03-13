@@ -1,5 +1,6 @@
 ﻿namespace Partas.Solid.UI
 
+open Partas.Solid.Polymorphism
 open Partas.Solid
 open Partas.Solid.Corvu
 open Fable.Core
@@ -19,6 +20,7 @@ type Drawer() =
 [<Erase>]
 type DrawerTrigger() =
     inherit Drawer.Trigger()
+    interface Polymorph
     [<SolidTypeComponent>]
     member props.constructor = Drawer.Trigger().spread props
     
@@ -31,6 +33,7 @@ type DrawerPortal() =
 [<Erase>]
 type DrawerClose() =
     inherit Drawer.Close()
+    interface Polymorph
     [<SolidTypeComponent>]
     member props.constructor = Drawer.Close().spread props
     
