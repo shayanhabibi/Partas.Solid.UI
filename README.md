@@ -4,6 +4,10 @@ Port of [Solid-ui](https://solid-ui.com/) in Partas.Solid, Oxpecker style.
 
 ## Progress - Implemented & Tested
 
+![img.png](img.png)
+
+> Build the playground with `npm run start`
+
 ### Visualisations
 - [x] Bar List
 - Charts

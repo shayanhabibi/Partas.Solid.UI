@@ -55,6 +55,7 @@
         <Compile Include="Components\Visualisations\BarList.fs" />
         <Compile Include="Components\Visualisations\DeltaBar.fs" />
         <Compile Include="Components\Visualisations\Progress.fs" />
+        <Content Include="img.png" />
         <Content Include="package.json" />
         <Compile Include="Layouts\Flex.fs" />
         <Compile Include="Layouts\Grid.fs" />
