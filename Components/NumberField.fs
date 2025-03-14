@@ -46,7 +46,7 @@ type NumberFieldIncrementTrigger() =
             "absolute right-1 top-1 inline-flex size-4 items-center justify-center"
             props.class'
         |]).spread(props) {
-            props.children &&= Lucide.Lucide.ChevronUp(class'="size-4")
+            if unbox props.children then props.children else Lucide.Lucide.ChevronUp(class'="size-4")
         }
 [<Erase>]
 type NumberFieldDecrementTrigger() =
@@ -57,7 +57,7 @@ type NumberFieldDecrementTrigger() =
             "absolute bottom-1 right-1 inline-flex size-4 items-center justify-center"
             props.class'
         |]).spread(props) {
-            props.children &&= Lucide.Lucide.ChevronDown(class' = "size-4")
+            if unbox props.children then props.children else Lucide.Lucide.ChevronDown(class' = "size-4")
         }
 [<Erase>]
 type NumberFieldDescription() =
