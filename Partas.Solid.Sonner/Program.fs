@@ -27,7 +27,7 @@ module sonner =
 
 open sonner
 
-[<Pojo>]
+[<Pojo; Global>]
 type ToastIcons
     (
         ?success : HtmlElement,
@@ -44,7 +44,7 @@ type ToastIcons
     member val loading : HtmlElement option = jsNative with get,set
     member val close : HtmlElement option = jsNative with get,set
 
-[<Pojo>]
+[<Pojo; Global>]
 type ToastClassnames
     (
         ?toast : string,
@@ -80,7 +80,7 @@ type ToastClassnames
     member val content : string option = jsNative with get,set
     member val icon : string option = jsNative with get,set
 
-[<Pojo>]
+[<Pojo; Global>]
 type Action
     (
         label : HtmlElement,
@@ -90,7 +90,7 @@ type Action
     member val label : HtmlElement = jsNative with get,set
     member val onClick : Browser.Types.MouseEvent -> unit = jsNative with get,set
     member val actionButtonStyle : obj option = jsNative with get,set
-[<Pojo>]
+[<Pojo; Global>]
 type Toast
     (
         ?id : string,
