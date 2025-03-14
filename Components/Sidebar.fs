@@ -402,7 +402,7 @@ type SidebarMenuItem() =
 module sidebarMenuButton =
     let variants =
         Lib.cva
-            "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0"
+            "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 aria-[current=page]:bg-sidebar-accent aria-[current=page]:font-medium aria-[current=page]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0"
             {|
                 variants = {|
                     variant = {|
@@ -448,7 +448,7 @@ type SidebarMenuButton() =
         let ctx = Context.useSidebar()
         let (isMobile, state) = (ctx.isMobile, ctx.state)
         let bakedButton =
-            Button(
+            Kobalte.Button(
                 class' = Lib.cn [|
                     variants({| variant = props.variant ; size = props.size |})
                     props.class'
@@ -482,7 +482,7 @@ type SidebarMenuAction() =
                 "peer-data-[size=default]/menu-button:top-1.5"
                 "peer-data-[size=lg]/menu-button:top-2.5"
                 "group-data-[collapsible=icon]:hidden"
-                props.showOnHover &&= "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-sidebar-accent-foreground md:opacity-0"
+                props.showOnHover &&= "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-aria-[current=page]/menu-button:text-sidebar-accent-foreground md:opacity-0"
                 props.class'
             |]
             ).data("sidebar", "menu-action")
@@ -496,7 +496,7 @@ type SidebarMenuBadge() =
         div(
             class' = Lib.cn [|
                 "pointer-events-none absolute right-1 flex h-5 min-w-5 select-none items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums text-sidebar-foreground"
-                "peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active=true]/menu-button:text-sidebar-accent-foreground"
+                "peer-hover/menu-button:text-sidebar-accent-foreground peer-aria-[current=page]/menu-button:text-sidebar-accent-foreground"
                 "peer-data-[size=sm]/menu-button:top-1"
                 "peer-data-[size=default]/menu-button:top-1.5"
                 "peer-data-[size=lg]/menu-button:top-2.5"
@@ -564,7 +564,7 @@ type SidebarMenuSubButton() =
         a(
             class' = Lib.cn [|
                 "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground outline-none ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-sidebar-accent-foreground"
-                "data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground"
+                "aria-[current=page]:bg-sidebar-accent aria-[current=page]:text-sidebar-accent-foreground"
                 props.size = Small &&= "text-xs"
                 props.size = Medium &&= "text-sm"
                 "group-data-[collapsible=icon]:hidden"
