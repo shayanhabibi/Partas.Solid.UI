@@ -35,14 +35,29 @@ type OtpFieldGroup() =
 type OtpFieldSlot() =
     inherit div()
     member val index: int = jsNative with get,set
-    // [<SolidTypeComponent>]
-    // member props.constructor =
-        //todo
-
-[<Erase; RequireQualifiedAccess>]
-module OtpField =
-    [<Import("useContext","@corvu/otp-field")>]
-    let useContext () = jsNative
+    [<SolidTypeComponent>]
+    member props.constructor =
+        let context = OtpField.useContext()
+        let character (): string = unbox (context.value()[props.index])
+        let showFakeCaret () = context.value().Length = props.index && context.isInserting()
+        div(
+            class' = Lib.cn [|
+                "group relative flex size-10 items-center justify-center border-y border-r border-input text-sm first:rounded-l-md first:border-l last:rounded-r-md"
+                props.class'
+            |]
+        ).spread props {
+            div(
+                class' = Lib.cn [|
+                    "absolute inset-0 z-10 transition-all group-first:rounded-l-md group-last:rounded-r-md"
+                    (context.activeSlots() |> Array.contains props.index) &&= "ring-2 ring-ring ring-offset-background"
+                |]
+            )
+            character()
+            if showFakeCaret() then
+                div(class' = "pointer-events-none absolute inset-0 flex items-center justify-center") {
+                    div(class' = "h-4 w-px animate-caret-blink bg-foreground duration-1000")
+                }
+        }
 
 [<Erase>]
 type OtpFieldSeparator() =
