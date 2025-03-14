@@ -70,8 +70,10 @@ type PaginationNext() =
             "gap-1 pl-2.5"
             props.class'
         |]).spread(props) {
-            props.children
-                &&= Fragment() {
+            if unbox props.children then
+                props.children
+            else 
+                Fragment() {
                     span() {"Next"}
                     Lucide.Lucide.ChevronRight(class'="size-4", strokeWidth = 2)
                 }
