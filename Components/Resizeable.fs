@@ -17,6 +17,13 @@ type Resizeable() =
 [<Erase>]
 type ResizeablePanel() =
     inherit Resizable.Panel()
+    [<SolidTypeComponentAttribute>]
+    member props.constructor = Resizable.Panel().spread props
+
+[<Erase>]
+type ResizeableHandle() =
+    inherit Resizable.Handle()
+    [<Erase>]
     member val withHandle: bool = jsNative with get,set
     [<SolidTypeComponent>]
     member props.constructor =
