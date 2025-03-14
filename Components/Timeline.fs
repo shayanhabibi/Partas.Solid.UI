@@ -1,5 +1,6 @@
 ﻿namespace Partas.Solid.UI
 
+open System
 open Partas.Solid
 open Partas.Solid.Aria
 open Fable.Core
@@ -7,11 +8,16 @@ open Fable.Core
 [<Erase>]
 type private TimelineItemBullet() =
     inherit RegularNode()
+    [<Erase>]
     member val isActive: bool = unbox null with get,set
+    [<Erase>]
     member val bulletSize: int = unbox null with get,set
+    [<Erase>]
     member val lineSize: int = unbox null with get,set
     [<SolidTypeComponentAttribute>]
     member props.constructor =
+        let bulletSize () = props.bulletSize
+        let lineSize () = props.lineSize
         div(
             class' = Lib.cn [|
                 "absolute top-0 flex items-center justify-center rounded-full border bg-background"
@@ -20,10 +26,10 @@ type private TimelineItemBullet() =
             |],
             ariaHidden = true
         )   .style'(
-            {| width = $"{props.bulletSize}px"
-               height = $"{props.bulletSize}px"
-               left = $"{-props.bulletSize / 2 - props.lineSize / 2}px"
-               ``border-width`` = $"{props.lineSize}px" |} )
+            {| width = $"{bulletSize()}px"
+               height = $"{bulletSize()}px"
+               left = $"{-bulletSize() / 2 - lineSize() / 2}px"
+               ``border-width`` = $"{lineSize()}px" |} )
             .spread props
 
 [<Erase>]
@@ -45,16 +51,25 @@ type private TimelineItemDescription() =
 [<Erase>]
 type private TimelineItem() =
     inherit RegularNode()
+    [<Erase>]
     member val title: HtmlElement = unbox null with get,set
+    [<Erase>]
     member val description: HtmlElement = unbox null with get,set
+    [<Erase>]
     member val bullet: HtmlElement = unbox null with get,set
+    [<Erase>]
     member val isLast: bool = unbox null with get,set
+    [<Erase>]
     member val isActive: bool = unbox null with get,set
+    [<Erase>]
     member val isActiveBullet: bool = unbox null with get,set
+    [<Erase>]
     member val bulletSize: int = unbox null with get,set
+    [<Erase>]
     member val lineSize: int = unbox null with get,set
     [<SolidTypeComponentAttribute>]
     member props.constructor =
+        let lineSize = props.lineSize
         li(
             class' =
                 Lib.cn [| "relative border-l pb-8 pl-8"
@@ -63,7 +78,7 @@ type private TimelineItem() =
                           props.class' |]
             ).style'(
                 {|
-                    ``border-left-width`` = $"{props.lineSize}px"  
+                    ``border-left-width`` = $"{lineSize}px"  
                 |}
             ).spread props
             {
@@ -83,7 +98,7 @@ open Fable.Core.JS
 
 [<Erase>]
 module Timeline =
-    [<Pojo>]
+    [<Pojo; Global>]
     type Item
         (
             title: HtmlElement,
@@ -98,19 +113,31 @@ module Timeline =
         member val class': string = unbox null with get,set
         member val bulletSize: int = unbox null with get,set
 
-
 [<Erase>]
 type Timeline() =
     inherit VoidNode()
+    [<Erase>]
     member val activeItem: int = unbox null with get,set
+    [<Erase>]
     member val bulletSize: int = unbox null with get,set
+    [<Erase>]
     member val lineSize: int = unbox null with get,set
+    [<Erase>]
     member val items: Timeline.Item[] = unbox null with get,set
+    static member calcPadding num =
+        num / 2
+        |> fun x -> $"{x}px"
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         props.bulletSize <- 16
         props.lineSize <- 2
-        ul().style'({| ``padding-left`` = $"{props.bulletSize / 2}px" |})
+        let checkIsLast (index: Accessor<int>) =
+            let length =
+                props.items
+                |> _.Length
+            length - 1
+            |> (=) (index())
+        ul().style'({| ``padding-left`` = Timeline.calcPadding props.bulletSize |})
             {
             For(each = props.items) {
                 yield fun item index ->
@@ -118,7 +145,7 @@ type Timeline() =
                         title = item.title,
                         description = item.description,
                         bullet = item.bullet,
-                        isLast = (index() = props.items.Length - 1),
+                        isLast = (checkIsLast index),
                         isActive =
                             if props.activeItem = -1 then false
                             else props.activeItem >= index() + 1

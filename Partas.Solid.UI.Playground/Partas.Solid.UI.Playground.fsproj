@@ -43,12 +43,23 @@
         <Compile Include="Components\PageBarList.fs" />
         <Compile Include="Components\PageDeltaBar.fs" />
         <Compile Include="Components\PageProgress.fs" />
+        <Compile Include="Components\PageSeparator.fs" />
+        <Compile Include="Components\PageSheet.fs" />
+        <Compile Include="Components\PageSidebar.fs" />
+        <Compile Include="Components\PageSkeleton.fs" />
+        <Compile Include="Components\PageSlider.fs" />
+        <Compile Include="Components\PageSonner.fs" />
+        <Compile Include="Components\PageTable.fs" />
+        <Compile Include="Components\PageTabs.fs" />
+        <Compile Include="Components\PageTimeline.fs" />
+        <Compile Include="Components\PageToggle.fs" />
+        <Compile Include="Components\PageFlex.fs" />
         <Compile Include="App.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Partas.Solid" Version="0.2.14" />
+      <PackageReference Include="Partas.Solid" Version="0.2.15" />
     </ItemGroup>
 
     <ItemGroup>

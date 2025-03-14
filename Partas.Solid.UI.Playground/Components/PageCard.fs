@@ -45,7 +45,8 @@ type PageCard() =
                 }
                 CardFooter() {
                     Button(class' = "w-full") {
-                        span() {Lucide.Lucide.Check(class' = "absolute size-4"); "Mark all as read"}
+                        Lucide.Lucide.Check(class' = "size-4")
+                        "Mark all as read"
                         
                     }
                 }

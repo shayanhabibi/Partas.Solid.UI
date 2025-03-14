@@ -19,7 +19,7 @@ type PageSelect() =
                     onChange = unbox setValue,
                     options = [| "Apple"; "Banana" ; "Blueberry" ; "Grapes" ; "Pineapple" |],
                     placeholder = unbox "Select a fruit..",
-                    itemComponent = (fun itemProps -> SelectItem(item = itemProps?item) { props?item?rawValue })
+                    itemComponent = (fun (itemProps: {|item:{|rawValue:string|}|}) -> SelectItem(item = itemProps?item) { itemProps.item.rawValue })
                 ) {
                     SelectTrigger(class' = "w-[180px]").attr("aria-label", "Fruit") {
                         SelectValue() { unbox<HtmlElement> (fun state -> state?selectedOption())}

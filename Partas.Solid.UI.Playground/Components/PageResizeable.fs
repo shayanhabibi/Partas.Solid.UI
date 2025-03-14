@@ -17,6 +17,7 @@ type PageResizeable() =
                         span(class' = "font-semibold") {"One"}
                     }
                 }
+                ResizeableHandle(withHandle = true)
                 ResizeablePanel(initialSize=0.75, class' = "overflow-hidden") {
                     Resizeable(orientation = Corvu.Orientation.Vertical) {
                         ResizeablePanel(initialSize = 0.5, class' = "overflow-hidden") {
@@ -24,6 +25,7 @@ type PageResizeable() =
                                 span(class' = "font-semibold") { "Two" }
                             }
                         }
+                        ResizeableHandle(withHandle = true)
                         ResizeablePanel(initialSize = 0.5, class' = "overflow-hidden") {
                             div(class' = "flex h-full items-center justify-center p-6") {
                                 span(class' = "font-semibold") { "Three" }

@@ -27,6 +27,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{BC11E26F-D453-4ABB-8F29-345A28ACEA99}"
 	ProjectSection(SolutionItems) = preProject
 		package.json = package.json
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global

@@ -139,6 +139,7 @@ type App() =
             MenuItem("BarList", "barlist", Lucide.Lucide.ChartBar())
             MenuItem("DeltaBar", "deltabar", Lucide.Lucide.ChartBarDecreasing())
             MenuItem("Progress", "progress", Lucide.Lucide.SlidersHorizontal())
+            MenuItem("Flex", "flex", Lucide.Lucide.BicepsFlexed())
         |]
         let (items, setItems) = createSignal(initialItems)
         let (item, addItem) = createSignal<MenuItem>(null)

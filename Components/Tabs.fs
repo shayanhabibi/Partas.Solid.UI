@@ -3,6 +3,11 @@ open Partas.Solid
 open Partas.Solid.Kobalte
 open Fable.Core
 
+[<Erase>]
+type Tabs() =
+    inherit Kobalte.Tabs()
+    [<SolidTypeComponentAttribute>]
+    member props.constructor = Kobalte.Tabs().spread props
 
 [<Erase>]
 type TabsList() =

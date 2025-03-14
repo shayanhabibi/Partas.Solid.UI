@@ -37,31 +37,36 @@ Port of [Solid-ui](https://solid-ui.com/) in Partas.Solid, Oxpecker style.
 - [x] Hovercard
 - [x] Label
 - [x] Menubar
-- [ ] Navigation menu
-- [ ] Number Field
-- [ ] OtpField
-- [ ] Pagination
+- [x] Navigation menu
+- [x] Number Field
+- [x] OtpField
+- [x] Pagination
 - [x] Popover
 - [x] Radio Group
-- [ ] Resizeable
-- [ ] Select
-- [ ] Separator
-- [ ] Sheet
+- [x] Resizeable
+- [x] Select
+  - > An issue has become apparent that the interface/abstraction for working with render functions is pretty poor due to typing errors when trying to build the tags with typed arguments.
+- [x] Separator
+- [x] Sheet
 - [x] Sidebar
-- [ ] Skeleton
-- [ ] Slider
-- [ ] Sonner
-- [ ] Switch
-- [ ] Table
-- [ ] Tabs
-- [ ] Text Field
-- [ ] Timeline
+- [x] Skeleton
+- [x] Slider
+- [x] Sonner
+- [x] Switch
+- [x] Table
+- [x] Tabs
+- [x] Text Field
+- [x] Timeline
 -  ~~Toast~~ *Unnecessary with sonner*
-- [ ] Toggle
-- [ ] Toggle Group
+- [x] Toggle
+- [x] Toggle Group
 - [x] Tooltip
 
 ### Layout
 -  Flex
 -  Grid
 
+
+# Pain Points
+
+Mostly to do with overloads, render props and funcs, etc. Will be attended to after functioning implementation of all components.
