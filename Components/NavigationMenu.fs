@@ -8,22 +8,35 @@ open Fable.Core
 
 [<Erase>]
 type NavigationMenuItem() =
-    inherit NavigationMenu.Item()
+    inherit NavigationMenu.Menu()
     [<SolidTypeComponent>]
-    member props.constructor = NavigationMenu.Item().spread props
+    member props.constructor = NavigationMenu.Menu().spread props
 
+[<Erase>]
+type NavigationMenuViewport() =
+    inherit NavigationMenu.Viewport()
+    [<SolidTypeComponent>]
+    member props.constructor =
+        Kobalte.NavigationMenu.Viewport(
+            class' = Lib.cn [|
+                // base settings
+                "pointer-events-none z-[1000] flex h-[var(--kb-navigation-menu-viewport-height)] w-[var(--kb-navigation-menu-viewport-width)] origin-[var(--kb-menu-content-transform-origin)] items-center justify-center overflow-x-clip overflow-y-visible rounded-md border bg-popover opacity-0 shadow-lg data-[expanded]:pointer-events-auto data-[orientation=vertical]:overflow-y-clip data-[orientation=vertical]:overflow-x-visible data-[expanded]:rounded-md"
+                // animation
+                "animate-content-hide transition-[width,height] duration-200 ease-in data-[expanded]:animate-content-show data-[expanded]:opacity-100 data-[expanded]:ease-out"
+                props.class'
+            |]).spread props
+        
 [<Erase>]
 type NavigationMenu() =
     inherit Kobalte.NavigationMenu()
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.NavigationMenu(gutter=6, class'= Lib.cn [|
-            "group/menu flex w-max flex-1 list-none items-center justify-center
-            data-[orientation=vertical]:flex-col [&>li]:w-full"
+            "group/menu flex w-max flex-1 list-none items-center justify-center data-[orientation=vertical]:flex-col [&>li]:w-full"
             props.class'
         |]).spread(props) {
             props.children
-            Kobalte.NavigationMenu.Viewport()
+            NavigationMenuViewport()
         }
     
 [<Erase>]
@@ -55,20 +68,6 @@ type NavigationMenuIcon() =
         }
 
 [<Erase>]
-type NavigationMenuViewport() =
-    inherit NavigationMenu.Viewport()
-    [<SolidTypeComponent>]
-    member props.constructor =
-        Kobalte.NavigationMenu.Viewport(
-            class' = Lib.cn [|
-                // base settings
-                "pointer-events-none z-[1000] flex h-[var(--kb-navigation-menu-viewport-height)] w-[var(--kb-navigation-menu-viewport-width)] origin-[var(--kb-menu-content-transform-origin)] items-center justify-center overflow-x-clip overflow-y-visible rounded-md border bg-popover opacity-0 shadow-lg data-[expanded]:pointer-events-auto data-[orientation=vertical]:overflow-y-clip data-[orientation=vertical]:overflow-x-visible data-[expanded]:rounded-md"
-                // animation
-                "animate-content-hide transition-[width,height] duration-200 ease-in data-[expanded]:animate-content-show data-[expanded]:opacity-100 data-[expanded]:ease-out"
-                props.class'
-            |]).spread props
-
-[<Erase>]
 type NavigationMenuContent() =
     inherit NavigationMenu.Content()
     [<SolidTypeComponent>]
@@ -94,6 +93,7 @@ type NavigationMenuContent() =
 [<Erase>]
 type NavigationMenuLink() =
     inherit NavigationMenu.Item()
+    [<Erase>] member val href: string = unbox null with get,set
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.NavigationMenu.Item(class' = Lib.cn [|
