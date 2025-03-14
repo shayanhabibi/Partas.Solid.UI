@@ -53,5 +53,10 @@ type Button() =
     member val variant: button.variant = jsNative with get,set
     [<SolidTypeComponent>]
     member props.constructor =
-        Kobalte.Button(class' = button.variants({|size = props.size; variant = props.variant|}))
+        Kobalte.Button(
+            class' = Lib.cn [|
+                button.variants({|size = props.size; variant = props.variant|})
+                props.class'
+            |]
+        )
             .spread props
