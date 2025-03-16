@@ -10,11 +10,6 @@ module private Imports =
     let inline magicChildren (children: 'T): Accessor<'T> = jsNative
     
 [<Erase>]
-type DatePicker() =
-    inherit DatePicker.Root()
-    [<SolidTypeComponent>]
-    member props.constructor = DatePicker.Root().spread props
-[<Erase>]
 type DatePickerRoot() =
     inherit DatePicker.Root()
     [<SolidTypeComponent>]

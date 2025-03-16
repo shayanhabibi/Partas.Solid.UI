@@ -80,6 +80,7 @@ let Root () =
         Route(path = "deltabar", component' = !@PageDeltaBar)
         Route(path = "progress", component' = !@PageProgress)
         Route(path = "flex", component' = !@PageFlex)
+        Route(path = "calendar", component' = !@PageCalendar)
     }
     
 render (Root, document.getElementById "root")

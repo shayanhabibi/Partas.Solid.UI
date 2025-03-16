@@ -140,6 +140,7 @@ type App() =
             MenuItem("DeltaBar", "deltabar", Lucide.Lucide.ChartBarDecreasing())
             MenuItem("Progress", "progress", Lucide.Lucide.SlidersHorizontal())
             MenuItem("Flex", "flex", Lucide.Lucide.BicepsFlexed())
+            MenuItem("Calendar", "calendar", Lucide.Lucide.Calendar())
         |]
         let (items, setItems) = createSignal(initialItems)
         let (item, addItem) = createSignal<MenuItem>(null)
