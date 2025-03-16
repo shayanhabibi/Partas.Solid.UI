@@ -141,6 +141,7 @@ type App() =
             MenuItem("Progress", "progress", Lucide.Lucide.SlidersHorizontal())
             MenuItem("Flex", "flex", Lucide.Lucide.BicepsFlexed())
             MenuItem("Calendar", "calendar", Lucide.Lucide.Calendar())
+            MenuItem("DatePicker", "datepicker", Lucide.Lucide.Calendar1())
         |]
         let (items, setItems) = createSignal(initialItems)
         let (item, addItem) = createSignal<MenuItem>(null)

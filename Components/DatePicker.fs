@@ -1,8 +1,11 @@
 ﻿namespace Partas.Solid.UI
 
 open Partas.Solid
+open Glutinum.Internationalised
+open Glutinum.ZagJs
 open Partas.Solid.ArkUI
 open Fable.Core
+open Fable.Core.JsInterop
 
 [<Erase; AutoOpen>]
 module private Imports =
@@ -236,4 +239,113 @@ type DatePickerTableCellTrigger() =
                 props.class'
             |]
         ).spread props
+
+[<Erase>]
+type DatePickerDayView() =
+    inherit DatePickerTableCellTrigger()
+    [<SolidTypeComponentAttribute>]
+    member props.constructor =
+        DatePickerView(view = Day) {
+            DatePickerContext() {
+                yield fun api -> Fragment() {
+                    DatePickerViewControl() {
+                        DatePickerPrevTrigger()
+                        DatePickerViewTrigger() { DatePickerRangeText() }
+                        DatePickerNextTrigger()
+                    }
+                    DatePickerTable() {
+                        DatePickerTableHead() {
+                            DatePickerTableRow() {
+                                Index(each = api().weekDays) {
+                                    yield fun weekDay index ->
+                                        DatePickerTableHeader() { weekDay().short }
+                                }
+                            }
+                        }
+                        DatePickerTableBody() {
+                            Index(each = api().weeks) {
+                                yield fun week index ->
+                                    DatePickerTableRow() {
+                                        Index(each = week()) {
+                                            yield fun day index ->
+                                                DatePickerTableCell(value = day()) {
+                                                    DatePickerTableCellTrigger().spread props {
+                                                        day().day.ToString()
+                                                    }
+                                                }
+                                        }
+                                    }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+[<Erase>]
+type DatePickerMonthView() =
+    inherit DatePickerTableCellTrigger()
+    [<SolidTypeComponentAttribute>]
+    member props.constructor =
+        DatePickerView(view = Month) {
+            DatePickerContext() {
+                yield fun api -> Fragment() {
+                    DatePickerViewControl() {
+                        DatePickerPrevTrigger()
+                        DatePickerViewTrigger() { DatePickerRangeText() }
+                        DatePickerNextTrigger()
+                    }
+                    DatePickerTable() {
+                        DatePickerTableBody() {
+                            Index(each = api().getMonthsGrid(!!{| columns = 4; format = "short" |})) {
+                                yield fun months index ->
+                                    DatePickerTableRow() {
+                                        Index(each = months()) {
+                                            yield fun month index ->
+                                                DatePickerTableCell(value = !!month().value) {
+                                                    DatePickerTableCellTrigger().spread props {
+                                                        month().label
+                                                    }
+                                                }
+                                        }
+                                    }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+[<Erase>]
+type DatePickerYearView() =
+    inherit DatePickerTableCellTrigger()
+    [<SolidTypeComponentAttribute>]
+    member props.constructor =
+        DatePickerView(view = Year) {
+            DatePickerContext() {
+                yield fun api -> Fragment() {
+                    DatePickerViewControl() {
+                        DatePickerPrevTrigger()
+                        DatePickerViewTrigger() { DatePickerRangeText() }
+                        DatePickerNextTrigger()
+                    }
+                    DatePickerTable() {
+                        DatePickerTableBody() {
+                            Index(each = api().getYearsGrid(!!{| columns = 4 |})) {
+                                yield fun years index ->
+                                    DatePickerTableRow() {
+                                        Index(each = years()) {
+                                            yield fun year index ->
+                                                DatePickerTableCell(value = !!year().value) {
+                                                    DatePickerTableCellTrigger().spread props {
+                                                        year().label
+                                                    }
+                                                }
+                                        }
+                                    }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         

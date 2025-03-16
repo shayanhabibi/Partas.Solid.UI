@@ -81,6 +81,7 @@ let Root () =
         Route(path = "progress", component' = !@PageProgress)
         Route(path = "flex", component' = !@PageFlex)
         Route(path = "calendar", component' = !@PageCalendar)
+        Route(path = "datepicker", component' = !@PageDatePicker)
     }
     
 render (Root, document.getElementById "root")

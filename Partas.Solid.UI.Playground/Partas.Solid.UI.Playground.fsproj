@@ -55,12 +55,13 @@
         <Compile Include="Components\PageToggle.fs" />
         <Compile Include="Components\PageFlex.fs" />
         <Compile Include="Components\PageCalendar.fs" />
+        <Compile Include="Components\PageDatePicker.fs" />
         <Compile Include="App.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Partas.Solid" Version="0.2.17" />
+      <PackageReference Include="Partas.Solid" Version="0.2.18" />
     </ItemGroup>
 
     <ItemGroup>
