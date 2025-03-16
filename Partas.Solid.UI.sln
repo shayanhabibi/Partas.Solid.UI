@@ -30,6 +30,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{BC11E26F-D
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Partas.Solid.ApexCharts", "Partas.Solid.Bindings\Partas.Solid.ApexCharts\Partas.Solid.ApexCharts.fsproj", "{A7CF07A4-4C1C-4BD5-95A1-16544C4A63DF}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Partas.Solid.TanStack.Table", "Partas.Solid.Bindings\Partas.Solid.TanStack.Table\Partas.Solid.TanStack.Table.fsproj", "{195C281B-0A58-44A3-8EBD-39649F6ED177}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Partas.Solid.ArkUI", "Partas.Solid.Bindings\Partas.Solid.ArkUI\Partas.Solid.ArkUI.fsproj", "{696AE0FB-ABAF-4F05-9359-7DF79802000A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

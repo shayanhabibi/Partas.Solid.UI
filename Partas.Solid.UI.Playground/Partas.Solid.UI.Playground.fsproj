@@ -54,6 +54,7 @@
         <Compile Include="Components\PageTimeline.fs" />
         <Compile Include="Components\PageToggle.fs" />
         <Compile Include="Components\PageFlex.fs" />
+        <Compile Include="Components\PageCalendar.fs" />
         <Compile Include="App.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>

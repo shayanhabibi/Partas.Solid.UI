@@ -55,6 +55,7 @@
         <Compile Include="Components\Visualisations\BarList.fs" />
         <Compile Include="Components\Visualisations\DeltaBar.fs" />
         <Compile Include="Components\Visualisations\Progress.fs" />
+        <Compile Include="Components\DatePicker.fs" />
         <Content Include="img.png" />
         <Content Include="package.json" />
         <Compile Include="Layouts\Flex.fs" />
@@ -71,11 +72,14 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.ApexCharts\Partas.Solid.ApexCharts.fsproj" />
+      <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.ArkUI\Partas.Solid.ArkUI.fsproj" />
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Cmdk\Partas.Solid.Cmdk.fsproj" />
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Corvu\Partas.Solid.Corvu.fsproj" />
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Kobalte\Partas.Solid.Kobalte.fsproj" />
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Lucide\Partas.Solid.Lucide.fsproj" />
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Primitives\Partas.Solid.Primitives.fsproj" />
+      <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.TanStack.Table\Partas.Solid.TanStack.Table.fsproj" />
       <ProjectReference Include="Partas.Solid.Sonner\Partas.Solid.Sonner.fsproj" />
     </ItemGroup>
 
