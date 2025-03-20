@@ -42,22 +42,24 @@ type NumberFieldIncrementTrigger() =
     inherit NumberField.IncrementTrigger()
     [<SolidTypeComponent>]
     member props.constructor =
+        let children,hasChildren = Lib.createChildrenResolver(props.children)
         Kobalte.NumberField.IncrementTrigger(class' = Lib.cn [|
             "absolute right-1 top-1 inline-flex size-4 items-center justify-center"
             props.class'
         |]).spread(props) {
-            if unbox props.children then props.children else Lucide.Lucide.ChevronUp(class'="size-4")
+            if hasChildren() then children() else Lucide.Lucide.ChevronUp(class'="size-4")
         }
 [<Erase>]
 type NumberFieldDecrementTrigger() =
     inherit NumberField.DecrementTrigger()
     [<SolidTypeComponent>]
     member props.constructor =
+        let children, hasChildren = Lib.createChildrenResolver(props.children)
         Kobalte.NumberField.DecrementTrigger(class' = Lib.cn [|
             "absolute bottom-1 right-1 inline-flex size-4 items-center justify-center"
             props.class'
         |]).spread(props) {
-            if unbox props.children then props.children else Lucide.Lucide.ChevronDown(class' = "size-4")
+            if hasChildren() then children() else Lucide.Lucide.ChevronDown(class' = "size-4")
         }
 [<Erase>]
 type NumberFieldDescription() =

@@ -47,17 +47,18 @@ type PaginationPrevious() =
     inherit Pagination.Previous()
     [<SolidTypeComponent>]
     member props.constructor =
+        let children,hasChildren = Lib.createChildrenResolver(props.children)
         Kobalte.Pagination.Previous(class' = Lib.cn [|
             button.variants({|variant="ghost"|})
             "gap-1 pl-2.5"
             props.class'
         |]).spread(props) {
-            Show(when' = (unbox props.children),
+            Show(when' = (hasChildren()),
                  fallback = Fragment() {
                      Lucide.Lucide.ChevronLeft(class'="size-4", strokeWidth = 2)
                      span() { "Previous" }
                  }) {
-                props.children
+                children()
             }
         }
 [<Erase>]
@@ -65,13 +66,14 @@ type PaginationNext() =
     inherit Pagination.Next()
     [<SolidTypeComponent>]
     member props.constructor =
+        let children, hasChildren = Lib.createChildrenResolver(props.children)
         Kobalte.Pagination.Next(class' = Lib.cn [|
             button.variants({|variant = "ghost" |})
             "gap-1 pl-2.5"
             props.class'
         |]).spread(props) {
-            if unbox props.children then
-                props.children
+            if hasChildren() then
+                children()
             else 
                 Fragment() {
                     span() {"Next"}

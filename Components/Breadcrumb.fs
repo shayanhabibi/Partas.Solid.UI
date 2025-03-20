@@ -47,8 +47,9 @@ type BreadcrumbSeparator() =
     inherit Breadcrumbs.Separator()
     [<SolidTypeComponent>]
     member props.constructor =
+        let children,hasChildren = Lib.createChildrenResolver(props.children)
         Breadcrumbs.Separator(class' = Lib.cn [|"[&>svg]:size-3.5"; props.class'|]).spread(props) {
-            if unbox props.children then props.children else Lucide.Slash(strokeWidth = 2)
+            if hasChildren() then children() else Lucide.Slash(strokeWidth = 2)
         }
 
 [<Erase>]

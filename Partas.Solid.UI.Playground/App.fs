@@ -142,6 +142,8 @@ type App() =
             MenuItem("Flex", "flex", Lucide.Lucide.BicepsFlexed())
             MenuItem("Calendar", "calendar", Lucide.Lucide.Calendar())
             MenuItem("DatePicker", "datepicker", Lucide.Lucide.Calendar1())
+            MenuItem("DataTable", "datatable", Lucide.Lucide.Table())
+            MenuItem("Grid", "grid", Lucide.Lucide.LayoutGrid())
         |]
         let (items, setItems) = createSignal(initialItems)
         let (item, addItem) = createSignal<MenuItem>(null)

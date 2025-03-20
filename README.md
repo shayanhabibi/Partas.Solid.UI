@@ -33,8 +33,8 @@ Port of [Solid-ui](https://solid-ui.com/) in Partas.Solid, Oxpecker style.
 - [x] Combobox
 - [x] Command
 - [x] Context Menu
--  Data Table
--  Date Picker
+- [x] Data Table
+- [x] Date Picker
 - [x] Dialog
 - [x] Drawer
 - [x] Dropdown Menu
@@ -67,8 +67,8 @@ Port of [Solid-ui](https://solid-ui.com/) in Partas.Solid, Oxpecker style.
 - [x] Tooltip
 
 ### Layout
--  Flex
--  Grid
+- [x] Flex
+- [x] Grid
 
 
 # Pain Points

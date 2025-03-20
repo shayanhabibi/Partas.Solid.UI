@@ -82,6 +82,8 @@ let Root () =
         Route(path = "flex", component' = !@PageFlex)
         Route(path = "calendar", component' = !@PageCalendar)
         Route(path = "datepicker", component' = !@PageDatePicker)
+        Route(path = "datatable", component' = !@PageDataTable)
+        Route(path = "grid", component' = !@PageGrid)
     }
-    
+
 render (Root, document.getElementById "root")

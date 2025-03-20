@@ -28,9 +28,9 @@ type Payment
     member val email = email with get,set
     
 let columns: ColumnDef<Payment>[] = [|
-    ColumnDef(accessorKey = "status", header = fun _ -> "Status")
-    ColumnDef(accessorKey = "email", header = fun _ -> "Email")
-    ColumnDef(accessorKey = "amount", header = fun _ -> "Amount")
+    ColumnDef(accessorKey = "status", header = !!"Status")
+    ColumnDef(accessorKey = "email", header = !!"Email")
+    ColumnDef(accessorKey = "amount", header = !!"Amount")
 |]
 
 [<Erase>]
@@ -40,11 +40,8 @@ type DataTable() =
     [<Erase>] member val data: Payment[] = unbox null with get,set
     [<SolidTypeComponentAttribute>]
     member props.constructor =
-        let table = createTable(unbox {|
-                                    data = props.data
-                                    columns = props.columns
-                                    getCoreRowModel = getCoreRowModel()
-                                  |})
+        let table = createTable(TableOptions(data = props.data, columns = props.columns, getCoreRowModel = getCoreRowModel()))
+        // div()
         div(class' = "rounded-md border") {
             UI.Table() {
                 UI.TableHeader() {
@@ -72,7 +69,7 @@ type DataTable() =
                                     For(each = row.getVisibleCells()) {
                                         yield fun cell index ->
                                             UI.TableCell() {
-                                                flexRender(cell.column.columnDef.cell, cell.getContext)
+                                                flexRender(cell.column.columnDef.cell, cell.getContext())
                                             }
                                     }
                                 }
