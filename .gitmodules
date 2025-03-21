@@ -1,0 +1,3 @@
+[submodule "Partas.Solid.Bindings"]
+	path = Partas.Solid.Bindings
+	url = https://github.com/shayanhabibi/Partas.Solid.Bindings

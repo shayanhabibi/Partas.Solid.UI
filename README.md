@@ -1,5 +1,13 @@
 ﻿# Partas.Solid.UI
 
+[//]: # (<div align="center">)
+
+[![Scc Count Badge](https://sloc.xyz/github/shayanhabibi/Partas.Solid.UI/?category=code&badge-bg-color=9100FF)](https://github.com/shayanhabibi/Partas.Solid.UI/)
+[![Scc Count Badge](https://sloc.xyz/github/shayanhabibi/Partas.Solid.UI/?category=comments&badge-bg-color=5E00B5)](https://github.com/shayanhabibi/Partas.Solid/)
+[![Scc Count Badge](https://sloc.xyz/github/shayanhabibi/Partas.Solid.UI/?category=cocomo&badge-bg-color=3B0086)](https://github.com/shayanhabibi/Partas.Solid/)
+
+[//]: # (</div>)
+
 Port of [Solid-ui](https://solid-ui.com/) in Partas.Solid, Oxpecker style.
 
 ## Progress - Implemented & Tested
