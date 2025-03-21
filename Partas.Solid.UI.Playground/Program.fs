@@ -85,6 +85,7 @@ let Root () =
         Route(path = "datatable", component' = !@PageDataTable)
         Route(path = "grid", component' = !@PageGrid)
         Route(path = "apexchart", component' = !@PageApexChart)
+        Route(path = "wordrotate", component' = !@PageWordRotate)
     }
 
 render (Root, document.getElementById "root")

@@ -59,6 +59,7 @@
         <Compile Include="Components\PageDataTable.fs" />
         <Compile Include="Components\PageGrid.fs" />
         <Compile Include="Components\PageApexChart.fs" />
+        <Compile Include="Components\PageWordRotate.fs" />
         <Compile Include="App.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
