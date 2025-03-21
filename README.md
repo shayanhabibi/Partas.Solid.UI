@@ -18,16 +18,16 @@ Port of [Solid-ui](https://solid-ui.com/) in Partas.Solid, Oxpecker style.
 
 ### Visualisations
 - [x] Bar List
-- Charts
+- [x] Charts
 - [x] Delta Bar
 - [x] Progress
-- Progress Circle
+- [x] Progress Circle
 
 ### UI
 - [x] Accordion
 - [x] Alert
 - [x] Alert Dialog
--  Aspect Ratio
+- [ ]Aspect Ratio
 - [x] Avatar
 - [x] Badge
 - [x] Badge Delta
@@ -57,7 +57,6 @@ Port of [Solid-ui](https://solid-ui.com/) in Partas.Solid, Oxpecker style.
 - [x] Radio Group
 - [x] Resizeable
 - [x] Select
-  - > An issue has become apparent that the interface/abstraction for working with render functions is pretty poor due to typing errors when trying to build the tags with typed arguments.
 - [x] Separator
 - [x] Sheet
 - [x] Sidebar
@@ -82,3 +81,7 @@ Port of [Solid-ui](https://solid-ui.com/) in Partas.Solid, Oxpecker style.
 # Pain Points
 
 Mostly to do with overloads, render props and funcs, etc. Will be attended to after functioning implementation of all components.
+
+## Int Arrays
+
+Libraries like ApexCharts need standard arrays rather than typed arrays. Since fable compiles, by default, int arrays into typed arrays on JS, we have to pass the `--typedArrays false` flag or unbox/box the ints so they are compiled as objs instead.

@@ -144,6 +144,7 @@ type App() =
             MenuItem("DatePicker", "datepicker", Lucide.Lucide.Calendar1())
             MenuItem("DataTable", "datatable", Lucide.Lucide.Table())
             MenuItem("Grid", "grid", Lucide.Lucide.LayoutGrid())
+            MenuItem("Apex Chart", "apexchart", Lucide.Lucide.ChartBar())
         |]
         let (items, setItems) = createSignal(initialItems)
         let (item, addItem) = createSignal<MenuItem>(null)

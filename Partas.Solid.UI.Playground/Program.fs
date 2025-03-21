@@ -84,6 +84,7 @@ let Root () =
         Route(path = "datepicker", component' = !@PageDatePicker)
         Route(path = "datatable", component' = !@PageDataTable)
         Route(path = "grid", component' = !@PageGrid)
+        Route(path = "apexchart", component' = !@PageApexChart)
     }
 
 render (Root, document.getElementById "root")

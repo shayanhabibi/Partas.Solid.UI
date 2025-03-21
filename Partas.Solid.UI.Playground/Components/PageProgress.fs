@@ -23,4 +23,6 @@ type PageProgress() =
                     ProgressValueLabel()
                 }
             }
+            
+            ProgressCircle(value = 75)
         }

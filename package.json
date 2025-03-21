@@ -2,8 +2,8 @@
   "private": "true",
   "development": "true",
   "scripts": {
-    "start": "fable watch -c Release --optimize --cwd Partas.Solid.UI.Playground/ -o output -e .fs.jsx --run vite",
-    "watch": "fable watch -c Release --optimize --cwd Partas.Solid.UI.Playground/ -o output -e .fs.jsx"
+    "start": "fable watch -c Release --optimize --typedArrays false --cwd Partas.Solid.UI.Playground/ -o output -e .fs.jsx --run vite",
+    "watch": "fable watch -c Release --optimize --typedArrays false --cwd Partas.Solid.UI.Playground/ -o output -e .fs.jsx"
   },
   "dependencies": {
     "@ark-ui/solid": "^5.1.0",

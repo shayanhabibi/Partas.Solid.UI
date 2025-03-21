@@ -56,10 +56,15 @@
         <Compile Include="Components\Visualisations\DeltaBar.fs" />
         <Compile Include="Components\Visualisations\Progress.fs" />
         <Compile Include="Components\DatePicker.fs" />
+        <Compile Include="Components\AspectRatio.fs" />
+        <Compile Include="Components\Carousel.fs" />
         <Content Include="img.png" />
         <Content Include="package.json" />
         <Compile Include="Layouts\Flex.fs" />
         <Compile Include="Layouts\Grid.fs" />
+        <Compile Include="TextEffects\AnimatedShinyText.fs" />
+        <Compile Include="Effects\BorderBeam.fs" />
+        <Folder Include="Charts\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -68,7 +73,7 @@
 
     <ItemGroup>
       <PackageReference Include="Fable.Core" Version="4.5.0" />
-      <PackageReference Include="Partas.Solid" Version="0.2.22" />
+      <PackageReference Include="Partas.Solid" Version="0.2.24" />
     </ItemGroup>
 
     <ItemGroup>
@@ -76,6 +81,7 @@
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.ArkUI\Partas.Solid.ArkUI.fsproj" />
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Cmdk\Partas.Solid.Cmdk.fsproj" />
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Corvu\Partas.Solid.Corvu.fsproj" />
+      <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.EmblaCarousel\Partas.Solid.EmblaCarousel.fsproj" />
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Kobalte\Partas.Solid.Kobalte.fsproj" />
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Lucide\Partas.Solid.Lucide.fsproj" />
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Primitives\Partas.Solid.Primitives.fsproj" />

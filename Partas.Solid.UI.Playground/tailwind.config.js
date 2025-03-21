@@ -32,6 +32,19 @@ module.exports = {
                 "content-hide": {
                     from: { opacity: 1, transform: "scale(1)" },
                     to: { opacity: 0, transform: "scale(0.96)" }
+                },
+                "shiny-text": {
+                    "0%, 90%, 100%": {
+                        "backgroundPosition": "calc(-100% - var(--shiny-width)) 0"
+                    },
+                    "30%, 60%": {
+                        "backgroundPosition": "calc(100% + var(--shiny-width)) 0"
+                    }
+                },
+                "border-beam": {
+                    "100%": {
+                        "offsetDistance": "100%"
+                    }
                 }
             },
             animation: {
@@ -40,7 +53,9 @@ module.exports = {
                 shine: "shine 3s ease-out infinite",
                 "caret-blink": "caret-blink 1.25s ease-out infinite",
                 "content-show": "content-show 0.2s ease-out",
-                "content-hide": "content-hide 0.2s ease-out"
+                "content-hide": "content-hide 0.2s ease-out",
+                "shiny-text": "shiny-text 8s infinite",
+                "border-beam": "border-beam var(--duration) infinite linear"
             },
             colors: {
                 border: "hsl(var(--border))",
