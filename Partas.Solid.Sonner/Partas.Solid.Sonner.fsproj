@@ -29,7 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Partas.Solid" Version="0.2.24" />
+      <PackageReference Include="Partas.Solid" Version="0.2.25" />
     </ItemGroup>
 
 </Project>

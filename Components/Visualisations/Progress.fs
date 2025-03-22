@@ -55,7 +55,7 @@ open progressCircle
 type ProgressCircle() =
     inherit div()
     [<Erase>] member val value: int = unbox null with get,set
-    member val size: Size = unbox null with get,set // TODO - why is this not transforming
+    [<Erase>] member val size: Size = unbox null with get,set
     [<Erase>] member val radius: int = unbox null with get,set
     [<Erase>] member val strokeWidth: int = unbox null with get,set
     [<Erase>] member val showAnimation: bool = unbox null with get,set

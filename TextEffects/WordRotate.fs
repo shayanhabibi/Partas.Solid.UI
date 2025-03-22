@@ -24,7 +24,7 @@ type WordRotate() =
         let index,setIndex = createSignal(0)
         createEffect(
             fun () ->
-                let interval = setInterval (fun () -> setIndex !!(fun prevIndex -> (prevIndex + 1) % (props.words |> _.Length (* Why is this workaround needed? TODO*)))) props.duration
+                let interval = setInterval (fun () -> setIndex.Invoke(fun prevIndex -> (prevIndex + 1) % (props.words.Length))) props.duration
                 onCleanup(fun () -> clearInterval(interval))
         )
         Presence(exitBeforeEnter = true) {
