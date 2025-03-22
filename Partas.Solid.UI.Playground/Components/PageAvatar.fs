@@ -12,6 +12,7 @@ type PageAvatar() =
     member props.compon =
         div() {
             Avatar() {
+                AvatarImage(src = "https://avatars.githubusercontent.com/u/57953499?v=4")
                 AvatarFallback() { "SH" }
             }
         }

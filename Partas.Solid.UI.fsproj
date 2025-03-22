@@ -64,6 +64,7 @@
         <Compile Include="Layouts\Grid.fs" />
         <Compile Include="TextEffects\AnimatedShinyText.fs" />
         <Compile Include="TextEffects\WordRotate.fs" />
+        <Compile Include="TextEffects\WordPullup.fs" />
         <Compile Include="Effects\BorderBeam.fs" />
         <Folder Include="Charts\" />
     </ItemGroup>
@@ -74,7 +75,7 @@
 
     <ItemGroup>
       <PackageReference Include="Fable.Core" Version="4.5.0" />
-      <PackageReference Include="Partas.Solid" Version="0.2.25" />
+      <PackageReference Include="Partas.Solid" Version="0.2.26" />
     </ItemGroup>
 
     <ItemGroup>
