@@ -40,6 +40,10 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Glutinum.ZagJs", "Partas.So
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Glutinum.Internationalised", "Partas.Solid.Bindings\Glutinum.Internationalised\Glutinum.Internationalised.fsproj", "{A8DBE45D-D088-4792-97F1-608B5A154B8E}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Partas.Solid.EmblaCarousel", "Partas.Solid.Bindings\Partas.Solid.EmblaCarousel\Partas.Solid.EmblaCarousel.fsproj", "{86A30796-7A2A-46EB-823B-AFA672777AD0}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Partas.Solid.Motion", "Partas.Solid.Bindings\Partas.Solid.Motion\Partas.Solid.Motion.fsproj", "{A2BB917F-8C1F-4D59-BC93-F56AE9633B19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,6 +110,14 @@ Global
 		{A8DBE45D-D088-4792-97F1-608B5A154B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8DBE45D-D088-4792-97F1-608B5A154B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8DBE45D-D088-4792-97F1-608B5A154B8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86A30796-7A2A-46EB-823B-AFA672777AD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86A30796-7A2A-46EB-823B-AFA672777AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86A30796-7A2A-46EB-823B-AFA672777AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86A30796-7A2A-46EB-823B-AFA672777AD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2BB917F-8C1F-4D59-BC93-F56AE9633B19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2BB917F-8C1F-4D59-BC93-F56AE9633B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2BB917F-8C1F-4D59-BC93-F56AE9633B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2BB917F-8C1F-4D59-BC93-F56AE9633B19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{17A59608-C9A8-4A80-AD39-EBB34CBCE068} = {5BFCF969-EA63-4E44-A406-DFF85C8A2F7C}
@@ -121,5 +133,7 @@ Global
 		{696AE0FB-ABAF-4F05-9359-7DF79802000A} = {5BFCF969-EA63-4E44-A406-DFF85C8A2F7C}
 		{03811A40-80EA-472B-B156-6E02C345CD6D} = {5BFCF969-EA63-4E44-A406-DFF85C8A2F7C}
 		{A8DBE45D-D088-4792-97F1-608B5A154B8E} = {5BFCF969-EA63-4E44-A406-DFF85C8A2F7C}
+		{86A30796-7A2A-46EB-823B-AFA672777AD0} = {5BFCF969-EA63-4E44-A406-DFF85C8A2F7C}
+		{A2BB917F-8C1F-4D59-BC93-F56AE9633B19} = {5BFCF969-EA63-4E44-A406-DFF85C8A2F7C}
 	EndGlobalSection
 EndGlobal

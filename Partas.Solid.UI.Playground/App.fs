@@ -145,7 +145,7 @@ type App() =
             MenuItem("DataTable", "datatable", Lucide.Lucide.Table())
             MenuItem("Grid", "grid", Lucide.Lucide.LayoutGrid())
             MenuItem("Apex Chart", "apexchart", Lucide.Lucide.ChartBar())
-            MenuItem("Word Rotate", "wordrotate", Lucide.Lucide.WholeWord())
+            MenuItem("Text Effects", "texteffects", Lucide.Lucide.WholeWord())
         |]
         let (items, setItems) = createSignal(initialItems)
         let (item, addItem) = createSignal<MenuItem>(null)
