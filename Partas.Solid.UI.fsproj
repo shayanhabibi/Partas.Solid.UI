@@ -62,10 +62,18 @@
         <Content Include="package.json" />
         <Compile Include="Layouts\Flex.fs" />
         <Compile Include="Layouts\Grid.fs" />
+        <Compile Include="Layouts\Marquee.fs" />
         <Compile Include="TextEffects\AnimatedShinyText.fs" />
         <Compile Include="TextEffects\WordRotate.fs" />
         <Compile Include="TextEffects\WordPullup.fs" />
+        <Compile Include="TextEffects\FlipText.fs" />
+        <Compile Include="TextEffects\GradualSpacing.fs" />
+        <Compile Include="TextEffects\LetterPullup.fs" />
+        <Compile Include="TextEffects\SparklesText.fs" />
+        <Compile Include="TextEffects\WordFadeIn.fs" />
         <Compile Include="Effects\BorderBeam.fs" />
+        <Compile Include="Effects\ShineBorder.fs" />
+        <Compile Include="Effects\DotPattern.fs" />
         <Folder Include="Charts\" />
     </ItemGroup>
 
@@ -75,7 +83,7 @@
 
     <ItemGroup>
       <PackageReference Include="Fable.Core" Version="4.5.0" />
-      <PackageReference Include="Partas.Solid" Version="0.2.26" />
+      <PackageReference Include="Partas.Solid" Version="0.2.27" />
     </ItemGroup>
 
     <ItemGroup>

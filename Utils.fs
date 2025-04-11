@@ -24,6 +24,7 @@ type [<Erase>] Lib =
                 |> _.Length
                 |> (<>) 0
         resolvedChildren, hasChildren
+    static member inline nbsp = "\u00A0"
     
 [<AutoOpen; Erase>]
 module Operators =
