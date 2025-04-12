@@ -5,26 +5,18 @@ open Partas.Solid
 
 
 /// <summary>
-/// To use this component, make sure you extend your configuration with the appropriate attributes:
+/// To use this component, make sure you extend your css with the appropriate attributes:
 /// <code>
-/// export default {
-///   "theme": {
-///     "extend": {
-///       "animation": {
-///         "shiny-text": "shiny-text 8s infinite"
-///       },
-///       "keyframes": {
-///         "shiny-text": {
-///           "0%, 90%, 100%": {
-///             "backgroundPosition": "calc(-100% - var(--shiny-width)) 0"
-///           },
-///           "30%, 60%": {
-///             "backgroundPosition": "calc(100% + var(--shiny-width)) 0"
-///           }
+/// @theme inline {
+///     --animate-shiny-text: shiny-text 8s infinite;
+///     @keyframes shiny-text {
+///         0%, 90%, 100% {
+///             background-position: calc(-100% - var(--shiny-width)) 0;
 ///         }
-///       }
+///         30%, 60% {
+///             background-position: calc(100% + var(--shiny-width)) 0;
+///         }
 ///     }
-///   }
 /// }
 /// </code>
 /// </summary>
