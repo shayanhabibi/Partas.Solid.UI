@@ -9,8 +9,6 @@
         <Content Include="vite.config.mts" />
         <Content Include="index.css" />
         <Content Include="index.html" />
-        <Content Include="postcss.config.js" />
-        <Content Include="tailwind.config.js" />
         <Compile Include="Codeblock.fs" />
         <Compile Include="Components\PageAccordion.fs" />
         <Compile Include="Components\PageAlert.fs" />

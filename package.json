@@ -1,7 +1,6 @@
 {
   "private": "true",
   "development": "true",
-  "type": "module",
   "scripts": {
     "start": "fable watch -c Release --optimize --typedArrays false --cwd Partas.Solid.UI.Playground/ -o output -e .fs.jsx --run vite",
     "watch": "fable watch -c Release --optimize --typedArrays false --cwd Partas.Solid.UI.Playground/ -o output -e .fs.jsx"
