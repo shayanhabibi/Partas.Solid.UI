@@ -16,9 +16,11 @@ module toggleGroup =
 
 open toggleGroup
 
-[<Erase>]
-module Context =
-    let ToggleGroupContext = createContext<ToggleGroupsContext>({| size = size.Default; variant = variant.Default |})
+[<AutoOpen; Erase>]
+module ToggleGroup =
+    [<Erase>]
+    module Context =
+        let ToggleGroupContext = createContext<ToggleGroupsContext>({| size = size.Default; variant = variant.Default |})
 
 [<Erase>]
 type ToggleGroup() =
