@@ -5,7 +5,7 @@ open Partas.Solid.Sonner
 open Fable.Core
 
 [<Erase>]
-type Toaster() =
+type Sonner() =
     inherit Sonner.Toaster()
     [<SolidTypeComponent>]
     member props.constructor =
