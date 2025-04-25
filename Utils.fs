@@ -39,7 +39,13 @@ type SrSpan() =
     member props.span =
         span(class' = Lib.cn [|"sr-only"; props.class'|]).spread props
 
-[<Erase>]
-module Context =
-    [<Erase>]
-    let private noop = ()
+[<Interface; Erase>]
+type SolidUIContext<'T> =
+    inherit HtmlContainer
+    inherit HtmlElement
+
+[<AutoOpen>]
+module Bindings =
+    type SolidUIContext<'T> with
+        [<Erase>]
+        member inline _.Yield( PARTAS_VALUE: 'T -> #HtmlElement ): HtmlContainerFun = fun PARTAS_CONT -> ignore PARTAS_VALUE
