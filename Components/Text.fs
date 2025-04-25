@@ -1,5 +1,6 @@
 ﻿namespace Partas.Solid.UI
 
+open Browser.Types
 open Partas.Solid
 open Partas.Solid.Kobalte
 open Fable.Core
@@ -105,3 +106,66 @@ type TextFieldErrorMessage() =
     member props.constructor =
         TextField.ErrorMessage(class' = Lib.cn [| label.variants({| variant = "error" |}); props.class' |])
             .spread props
+
+[<AutoOpen; Erase>]
+module TextFieldModularForms =
+    [<Erase; RequireQualifiedAccess>]
+    module ModularForms =
+        type private DV = DefaultValueAttribute
+        
+        [<RequireQualifiedAccess; StringEnum>]
+        type TextFieldType =
+            | Text
+            | Email
+            | Tel
+            | Password
+            | Url
+            | Date
+
+        open Fable.Core.JsInterop
+        
+        [<Erase>]
+        type TextFieldForm() =
+            inherit TextField()
+            [<DV>] val mutable type': TextFieldType
+            [<DV>] val mutable private ref: Element
+            [<DV>] val mutable label: string
+            [<DV>] val mutable placeholder: string
+            [<DV>] val mutable error: string
+            [<DV>] val mutable multiline: bool
+            [<DV>] val mutable onInput: (InputEvent -> unit)
+            [<DV>] val mutable onBlur: (FocusEvent -> unit)
+            [<SolidTypeComponent>]
+            member props.constructor =
+                TextField(
+                    name = props.name,
+                    class' = props.class'
+                    ,value = props.value
+                    ,required = props.required
+                    ,disabled = props.disabled
+                    ,validationState = if unbox<bool> props.error then ValidationState.Invalid else ValidationState.Valid
+                    ) {
+                    Show(when' = unbox props.label) {
+                        TextFieldLabel() { props.label }
+                    }
+                    Show(
+                        when' = props.multiline
+                        ,fallback= TextFieldInput(
+                                placeholder = props.placeholder
+                                ,value = props.value
+                                ,onInput = props.onInput
+                                ,onChange = !!props.onChange
+                                ,onBlur = !!props.onBlur
+                            ).ref(props.ref)
+                        ) {
+                        TextFieldTextArea(
+                                placeholder = props.placeholder
+                                ,onInput = props.onInput
+                                ,onChange = !!props.onChange
+                                ,onBlur = !!props.onBlur
+                            ).ref(props.ref).bool("autoResize", true)
+                    }
+                    TextFieldErrorMessage() { props.error }
+                }
+            
+            
