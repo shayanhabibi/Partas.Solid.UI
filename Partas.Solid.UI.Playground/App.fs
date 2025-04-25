@@ -1,4 +1,4 @@
-﻿module Partas.Solid.UI.Playground.App
+﻿module App
 
 open Partas.Solid.Polymorphism
 open Partas.Solid
