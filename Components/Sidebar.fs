@@ -55,25 +55,27 @@ module sidebar =
 open sidebar
 open Fable.Core.JsInterop
 
-[<Erase>]
-module Context =
-    let SidebarContext = createContext<SidebarContext>()
-    let useSidebar () =
-        let context = useContext(SidebarContext)
-        if not (unbox context) then failwith "useSidebar can only be used within a Sidebar"
-        else context
-        
-    let useIsMobile (fallback: bool) =
-        let (isMobile, setIsMobile) = createSignal(fallback)
-        createEffect(
-                fun () ->
-                    let mobileBreakpointListener =
-                            Media.makeMediaQueryListener
-                                $"(max-width:{mobileBreakpoint - 1}px"
-                                (fun event -> setIsMobile(event.matches))
-                    onCleanup(mobileBreakpointListener)
-            )
-        isMobile
+[<AutoOpen; Erase>]
+module Sidebar =
+    [<Erase>]
+    module Context =
+        let SidebarContext = createContext<SidebarContext>()
+        let useSidebar () =
+            let context = useContext(SidebarContext)
+            if not (unbox context) then failwith "useSidebar can only be used within a Sidebar"
+            else context
+            
+        let useIsMobile (fallback: bool) =
+            let (isMobile, setIsMobile) = createSignal(fallback)
+            createEffect(
+                    fun () ->
+                        let mobileBreakpointListener =
+                                Media.makeMediaQueryListener
+                                    $"(max-width:{mobileBreakpoint - 1}px"
+                                    (fun event -> setIsMobile(event.matches))
+                        onCleanup(mobileBreakpointListener)
+                )
+            isMobile
 
 [<Erase>]
 type SidebarProvider() =
