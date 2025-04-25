@@ -1,7 +1,7 @@
 ﻿module Partas.Solid.UI.Playground
 
 open Browser
-open Partas.Solid.UI.Playground.App
+open App
 open Partas.Solid.UI.Playground.PageAccordion
 open Partas.Solid.UI.Playground.Components
 open Partas.Solid
