@@ -44,8 +44,10 @@ type DialogOverlay() =
 [<Erase>]
 type DialogContent() =
     inherit Dialog.Content()
+    [<Erase>] member val dismissible: bool = unbox null with get,set
     [<SolidTypeComponent>]
     member props.constructor =
+        props.dismissible <- true
         DialogPortal() {
             DialogOverlay()
             Dialog.Content(
@@ -56,8 +58,10 @@ type DialogContent() =
             ).spread(props)
                 {
                     props.children
-                    Dialog.CloseButton(class' = "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[expanded]:bg-accent data-[expanded]:text-muted-foreground" )
-                        { Lucide.Lucide.X(class' = "size-4"); SrSpan() {"Close"} }
+                    Show(when' = props.dismissible) {
+                        Dialog.CloseButton(class' = "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[expanded]:bg-accent data-[expanded]:text-muted-foreground" )
+                            { Lucide.Lucide.X(class' = "size-4"); SrSpan() {"Close"} }
+                    }
                 }
         }
 
