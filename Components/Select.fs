@@ -1,5 +1,6 @@
 ﻿namespace Partas.Solid.UI
 
+open Browser.Types
 open Partas.Solid
 open Partas.Solid.Lucide
 open Partas.Solid.Kobalte
@@ -7,14 +8,14 @@ open Partas.Solid.Polymorphism
 open Fable.Core
 
 [<Erase>]
-type Select() =
-    inherit Kobalte.Select()
+type Select<'T>() =
+    inherit Kobalte.Select<'T>()
     [<SolidTypeComponent>]
     member props.constructor = Kobalte.Select().spread props
-    
+
 [<Erase>]
-type SelectValue() =
-    inherit Select.Value()
+type SelectValue<'T>() =
+    inherit Select.Value<'T>()
     [<SolidTypeComponent>]
     member props.constructor = Select.Value().spread props
     
@@ -113,3 +114,68 @@ type SelectErrorMessage() =
             variants({| variant = "error" |})
             props.class'
         |]).spread props
+
+[<AutoOpen; Erase>]
+module SelectModularForms =
+    [<Erase; RequireQualifiedAccess>]
+    module ModularForms =
+        type private DV = DefaultValueAttribute
+        
+        open Fable.Core.JsInterop
+
+        [<Erase>]
+        type SelectForm<'T when 'T: equality>() =
+            inherit Select<'T>()
+            [<DV>] val mutable label: string
+            [<DV>] val mutable error: string
+            [<DV>] val mutable private ref: Element
+            [<DV>] val mutable onInput: (InputEvent -> unit)
+            [<DV>] val mutable onBlur: (FocusEvent -> unit)
+            [<DV>] val mutable mapOptionValue: ('T -> obj)
+            [<DV>] val mutable mapOptionText: ('T -> string)
+            [<SolidTypeComponent>]
+            member props.constructor =
+                let getValue, setValue = createSignal<'T>(Unchecked.defaultof<'T>)
+                createEffect(fun () ->
+                    setValue(props.options |> Array.tryFind( fun opt -> props.value = opt) |> unbox)
+                )
+                let rootProps, selectProps = splitProps(props, [|
+                    "name"
+                    "placeholder"
+                    "options"
+                    "required"
+                    "disabled"
+                |], [|
+                    "onInput"
+                    "onChange"
+                    "onBlur"
+                    "ref"
+                    "placeholder"
+                |])
+                
+                Select<'T>(
+                    multiple = false
+                    ,value = getValue()
+                    ,onChange = setValue
+                    ,optionValue = !!props.mapOptionValue
+                    ,optionTextValue = !!props.mapOptionText
+                    ,validationState = if !!props.error then ValidationState.Invalid else ValidationState.Valid
+                    ,itemComponent = (fun comp ->
+                        SelectItem(item = comp.item) { comp.item.textValue })
+                ).spread(rootProps) {
+                    Show(when' = !!props.label) {
+                        SelectLabel() { props.label }
+                    }
+                    SelectHiddenSelect().spread selectProps
+                    SelectTrigger() {
+                        SelectValue<'T>() {
+                            yield fun state ->
+                                if isNullOrUndefined props.mapOptionText then
+                                    state.selectedOption() |> unbox<HtmlElement>
+                                else
+                                    state.selectedOption() |> props.mapOptionText |> unbox<HtmlElement>
+                        }
+                    }
+                    SelectContent()
+                    SelectErrorMessage() { props.error }
+                }
