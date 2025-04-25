@@ -2,6 +2,7 @@
 module Partas.Solid.UI.Playground.Components.PageSelect
 
 open Partas.Solid
+open Partas.Solid.Kobalte
 open Partas.Solid.UI
 open Fable.Core
 open Fable.Core.JsInterop
@@ -14,15 +15,15 @@ type PageSelect() =
         let value,setValue = createSignal("")
         div(class' = "w-full items-center justify-center flex p-6") {
             div(class' = "flex flex-col") {
-                Select(
-                    value = unbox (value()),
-                    onChange = unbox setValue,
+                Select<string>(
+                    value = !!value(),
+                    onChange = !!setValue,
                     options = [| "Apple"; "Banana" ; "Blueberry" ; "Grapes" ; "Pineapple" |],
                     placeholder = unbox "Select a fruit..",
-                    itemComponent = (fun (itemProps: {|item:{|rawValue:string|}|}) -> SelectItem(item = itemProps?item) { itemProps.item.rawValue })
+                    itemComponent = (fun (itemProps) -> SelectItem(item = itemProps?item) { itemProps.item.rawValue })
                 ) {
                     SelectTrigger(class' = "w-[180px]").attr("aria-label", "Fruit") {
-                        SelectValue() { unbox<HtmlElement> (fun state -> state?selectedOption())}
+                        SelectValue() { yield fun state -> state.selectedOption()}
                     }
                     SelectContent()
                 }
