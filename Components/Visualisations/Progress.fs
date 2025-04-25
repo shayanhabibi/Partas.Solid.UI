@@ -59,6 +59,8 @@ type ProgressCircle() =
     [<Erase>] member val radius: int = unbox null with get,set
     [<Erase>] member val strokeWidth: int = unbox null with get,set
     [<Erase>] member val showAnimation: bool = unbox null with get,set
+    [<Erase>] member val customTween: bool = unbox null with get,set
+    [<Erase>] member val color: string = unbox null with get,set
     static member getLimitedValue (input: int) =
         if input = JS.undefined then 0
         elif input > 100 then 100
@@ -67,6 +69,8 @@ type ProgressCircle() =
     member props.constructor =
         props.size <- Md
         props.showAnimation <- true
+        props.color <- "stroke-primary"
+        props.customTween <- false
         let value: unit -> float = fun () -> ProgressCircle.getLimitedValue(props.value)
         let radius = fun () -> float props.radius ??= float (sizes(props.size).radius)
         let strokeWidth = fun () -> float props.strokeWidth ??= float (sizes(props.size).strokeWidth)
@@ -74,7 +78,7 @@ type ProgressCircle() =
         let circumference = fun () -> normalizedRadius() * 2. * JS.Math.PI
         let strokeDashoffset = fun () -> (value() / 100.) * circumference()
         let offset = fun () -> circumference() - strokeDashoffset()
-         
+        
         div(
             class' = Lib.cn [|
                 "flex flex-col items-center justify-center"
@@ -94,8 +98,10 @@ type ProgressCircle() =
                         cy = !^radius(),
                         class' = Lib.cn [|
                             "stroke-primary transition-colors ease-linear"
-                            if props.showAnimation then "transition-all duration-300 ease-in-out"
+                            if props.customTween then "transition-all"
+                            elif props.showAnimation then "transition-all duration-300 ease-in-out"
                             else ""
+                            props.color
                         |]
                     )   .attr("stroke-width", !!strokeWidth())
                         .attr("fill", "transparent")
