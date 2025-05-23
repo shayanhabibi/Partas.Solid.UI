@@ -6,21 +6,23 @@ open Partas.Solid.Kobalte
 open Fable.Core
 open Fable.Core.JsInterop
 
-module [<Erase>] portal =
-    let variants =
-        Lib.cva
-            "fixed inset-0 z-50 flex"
-            {|
-                variants = {|
-                    position = {|
-                        top = "items-start"
-                        bottom = "items-end"
-                        left = "justify-start"
-                        right = "justify-end"
-                    |}
-                |}
-                defaultVariants = {| position = "right" |}
-            |}
+[<Erase>]
+module Portal =
+    [<RequireQualifiedAccess; StringEnum>]
+    type Position =
+        | Top
+        | Bottom
+        | Left
+        | Right
+        static member variants (?position: Position): string =
+            let position = defaultArg position Position.Right
+            "fixed inset-0 z-50 flex " +
+            match position with
+            | Top -> "items-start"
+            | Bottom -> "items-end"
+            | Left -> "justify-start"
+            | Right -> "justify-end"
+
 module [<Erase>] sheet =
     let variants =
         Lib.cva
@@ -66,7 +68,7 @@ type SheetPortal() =
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.Dialog.Portal().spread(props) {
-            div(class' = portal.variants({|position = props.position |})) {
+            div(class' = Portal.Position.variants(!!props.position)) {
                 props.children
             }
         }

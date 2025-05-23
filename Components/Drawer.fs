@@ -46,9 +46,9 @@ type DrawerOverlay() =
         Corvu.Drawer.Overlay(class'= Lib.cn [|
             "fixed inset-0 z-50 data-[transitioning]:transition-colors data-[transitioning]:duration-300"
             props.class'
-        |]).spread(props).style'({|
-            ``background-color`` = $"rgb(0 0 0 / {0.8 * drawerContext?openPercentage()})"
-        |})
+        |]).spread(props).style'([
+            Style.Style.backgroundColor $"rgb(0 0 0 / {0.8 * drawerContext?openPercentage()})"
+        ])
 [<Erase>]
 type DrawerContent() =
     inherit Drawer.Content()

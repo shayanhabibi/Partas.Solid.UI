@@ -82,16 +82,30 @@ module selectLabel =
                         variant = "label"
                     |}
                 |}
+[<Erase>]
+module SelectLabel =
+    [<RequireQualifiedAccess; StringEnum>]
+    type Variant =
+        | Label
+        | Description
+        | Error
 
 open selectLabel
 
 [<Erase>]
 type SelectLabel() =
     inherit Select.Label()
+    static member variants (?variant: SelectLabel.Variant): string =
+        let variant = defaultArg variant SelectLabel.Variant.Label
+        "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 " +
+        match variant with
+        | SelectLabel.Variant.Label -> "data-[invalid]:text-destructive"
+        | SelectLabel.Variant.Description -> "font-normal text-muted-foreground"
+        | SelectLabel.Variant.Error -> "text-xs text-destructive"
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         Select.Label(class' = Lib.cn [|
-            variants()
+            SelectLabel.variants()
             props.class'
         |]).spread props
 
@@ -101,7 +115,7 @@ type SelectDescription() =
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         Select.Description(class' = Lib.cn [|
-            variants({| variant = "description" |})
+            SelectLabel.variants(SelectLabel.Variant.Description)
             props.class'
         |]).spread props
 
@@ -111,7 +125,7 @@ type SelectErrorMessage() =
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         Select.ErrorMessage(class' = Lib.cn [|
-            variants({| variant = "error" |})
+            SelectLabel.variants(SelectLabel.Variant.Error)
             props.class'
         |]).spread props
 

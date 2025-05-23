@@ -25,7 +25,7 @@ type PaginationItem() =
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.Pagination.Item(class' = Lib.cn [|
-            button.variants({|variant="ghost"|})
+            Button.variants(Button.Variant.Ghost)
             "size-10 data-[current]:border"
             props.class'
         |]).spread(props)
@@ -49,7 +49,7 @@ type PaginationPrevious() =
     member props.constructor =
         let children,hasChildren = Lib.createChildrenResolver(props.children)
         Kobalte.Pagination.Previous(class' = Lib.cn [|
-            button.variants({|variant="ghost"|})
+            Button.variants(Button.Variant.Ghost)
             "gap-1 pl-2.5"
             props.class'
         |]).spread(props) {
@@ -68,7 +68,7 @@ type PaginationNext() =
     member props.constructor =
         let children, hasChildren = Lib.createChildrenResolver(props.children)
         Kobalte.Pagination.Next(class' = Lib.cn [|
-            button.variants({|variant = "ghost" |})
+            Button.variants(Button.Variant.Ghost)
             "gap-1 pl-2.5"
             props.class'
         |]).spread(props) {
