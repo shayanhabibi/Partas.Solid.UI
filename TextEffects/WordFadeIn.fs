@@ -24,14 +24,14 @@ type WordFadeIn() =
             For(each = (props.text.Split(" "))) {
                 yield fun word index ->
                     Motion(
-                        initial = jsOptions<MotionStyle>(fun o ->
-                            o.opacity <- !!0
-                            o.filter <- $"blur({props.blur}[x)"
-                        ),
-                        inView = jsOptions<MotionStyle>(fun o ->
-                            o.opacity <- !!1
-                            o.filter <- "blur(0px)"
-                        ),
+                        initial = motionStyle [
+                            MotionStyle.opacity "0"
+                            MotionStyle.filter $"blur({props.blur}px)"
+                        ],
+                        inView = motionStyle [
+                            MotionStyle.opacity "1"
+                            MotionStyle.filter "blur(0px)"
+                        ],
                         inViewOptions = {| once = true |},
                         transition = jsOptions<AnimationOptions>(fun (o: AnimationOptions) ->
                             o.delay <- !!(props.delay + !!index() * !!props.delay)

@@ -9,8 +9,8 @@ open System
 
 [<Pojo>]
 type FlipTextStates(?initial: MotionStyle, ?animate: MotionStyle) =
-    member val initial = initial |> Option.defaultValue null with get,set
-    member val animate = animate |> Option.defaultValue null with get,set
+    member val initial = initial |> Option.defaultValue Unchecked.defaultof<MotionStyle> with get,set
+    member val animate = animate |> Option.defaultValue Unchecked.defaultof<MotionStyle> with get,set
 
 [<Erase>]
 type FlipText() =
@@ -24,12 +24,16 @@ type FlipText() =
         props.duration <- 0.5
         props.delayMultiple <- 0.08
         props.states <- FlipTextStates(
-                initial = jsOptions<MotionStyle>(fun o ->
-                    o.rotateX <- !!(-90)
-                    o.opacity <- !!0),
-                animate = jsOptions<MotionStyle>(fun o ->
-                    o.rotateX <- !!0
-                    o.opacity <- !!1)
+                initial =
+                    motionStyle [
+                        MotionStyle.rotateX -90
+                        MotionStyle.opacity "0"
+                    ],
+                animate =
+                    motionStyle [
+                        MotionStyle.rotateX 0
+                        MotionStyle.opacity "1"
+                    ]
             )
         div(class' = Lib.cn [| "flex"; props.class' |]) {
             For(each = (props.text |> _.ToCharArray() |> Array.map string )) {

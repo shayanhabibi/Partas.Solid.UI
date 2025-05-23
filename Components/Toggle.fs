@@ -39,6 +39,7 @@ module toggle =
 [<Erase>]
 type Toggle() =
     inherit ToggleButton()
+    interface KobalteStateProvider<{|pressed:(unit -> bool)|}>
     member val variant: toggle.variant = unbox null with get,set
     member val size: toggle.size = unbox null with get,set
     [<SolidTypeComponentAttribute>]

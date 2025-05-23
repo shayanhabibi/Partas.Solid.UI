@@ -1,4 +1,4 @@
-﻿module App
+﻿module Partas.Solid.App
 
 open Partas.Solid.Polymorphism
 open Partas.Solid
@@ -73,7 +73,7 @@ type AppSidebar() =
                             For(each = props.items) {
                                 yield fun item index ->
                                     SidebarMenuItem() {
-                                        SidebarMenuButton(tooltip = item.title).as'(A(href= item.url)) {
+                                        SidebarMenuButton(tooltip = item.title).as'(A(href= item.url, noScroll = true)) {
                                             item.icon
                                             span() { item.title }
                                         }
@@ -148,13 +148,13 @@ type App() =
             MenuItem("Text Effects", "texteffects", Lucide.Lucide.WholeWord())
         |]
         let (items, setItems) = createSignal(initialItems)
-        let (item, addItem) = createSignal<MenuItem>(null)
+        let (item, addItem) = createSignal<MenuItem>(Unchecked.defaultof<MenuItem>)
         div(class' = "flex w-full") {
             AppSidebar(items = items())
             main(
-                class' = "p-2 w-full"
+                class' = "w-full flex flex-col p-2"
             ) {
-                SidebarTrigger()
+                // SidebarTrigger()
                 props.children
             }
         }

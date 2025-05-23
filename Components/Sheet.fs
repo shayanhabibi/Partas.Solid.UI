@@ -62,7 +62,7 @@ type SheetClose() =
 [<Erase>]
 type SheetPortal() =
     inherit Dialog.Portal()
-    member val position: Kobalte.Placement = jsNative with get,set
+    member val position: Kobalte.Enums.KobaltePlacement = jsNative with get,set
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.Dialog.Portal().spread(props) {
@@ -83,7 +83,7 @@ type SheetOverlay() =
 [<Erase>]
 type SheetContent() =
     inherit Dialog.Content()
-    member val position: Kobalte.Placement = jsNative with get,set
+    member val position: Kobalte.Enums.KobaltePlacement = jsNative with get,set
     [<SolidTypeComponent>]
     member props.constructor =
         SheetPortal(position= props.position) {

@@ -42,19 +42,21 @@ type Sparkle() =
             tag = "svg",
             class' = "pointer-events-none absolute z-20",
             ariaHidden = true,
-            initial = jsOptions<MotionStyle>(fun o ->
-                o.opacity <- !!0),
-            animate = jsOptions<MotionStyle>(fun o ->
-                o.opacity <- !![| 0; 1; 0 |]
-                o.scale <- !![| 0.; props.scale; 0. |]
-                o.rotate <- !![| 75; 120; 150 |]),
+            initial = motionStyle [
+                MotionStyle.opacity "0"
+            ],
+            animate = motionStyle [
+                MotionStyle.opacity "0,1,0"
+                MotionStyle.scale $"0, {props.scale}, 0"
+                MotionStyle.rotate "75,120,150"
+            ],
             transition = jsOptions<AnimationOptions>(fun o ->
                 o.duration <- !!1.2
                 o.repeat <- !!Constructors.Number.MAX_SAFE_INTEGER
                 o.delay <- !!props.delay
-                )
-        )   .style'({| left = props.x ; top = props.y |})
-            .attr("width", "21")
+                ),
+            style = $"{{ left: {props.x}; top: {props.y} }}"
+        )   .attr("width", "21")
             .attr("height", "21")
             .attr("viewBox", "0 0 21 21")
             {

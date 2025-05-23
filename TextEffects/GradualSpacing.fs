@@ -9,8 +9,8 @@ open System
 
 [<Pojo>]
 type GradualSpacingStates(?hidden: MotionStyle, ?visible: MotionStyle) =
-    member val hidden = hidden |> Option.defaultValue null with get,set
-    member val visible = visible |> Option.defaultValue null with get,set
+    member val hidden = hidden.Value with get,set
+    member val visible = visible.Value with get,set
     
     
 
@@ -26,16 +26,14 @@ type GradualSpacing() =
         props.duration <- 0.5
         props.delayMultiple <- 0.04
         props.states <- GradualSpacingStates(
-                hidden = jsOptions<MotionStyle>(
-                        fun o ->
-                            o.opacity  <- !!0
-                            o.x <- !!(-20)
-                    ),
-                visible = jsOptions<MotionStyle>(
-                        fun o ->
-                            o.opacity <- !!1
-                            o.x <- !!0
-                    )
+                hidden = motionStyle [
+                    MotionStyle.opacity "0"
+                    MotionStyle.x -20
+                ],
+                visible = motionStyle [
+                    MotionStyle.opacity "1"
+                    MotionStyle.x 0
+                ]
             )
         div(class' = Lib.cn [| "flex"; props.class' |]) {
             For(each = (props.text.ToCharArray() |> Array.map string)) {

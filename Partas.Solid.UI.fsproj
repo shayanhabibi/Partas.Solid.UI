@@ -82,8 +82,8 @@
 
     <ItemGroup>
       <PackageReference Include="Fable.Core" Version="4.5.0" />
-      <PackageReference Include="Partas.Solid" Version="0.2.32" />
-      <PackageReference Update="FSharp.Core" Version="9.0.300-beta.25181.1" />
+      <PackageReference Update="FSharp.Core" Version="9.0.300" />
+      <PackageReference Include="Partas.Solid" Version="1.0.0-alpha3" />
     </ItemGroup>
 
     <ItemGroup>

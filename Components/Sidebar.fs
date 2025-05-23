@@ -461,7 +461,7 @@ type SidebarMenuButton() =
                 .spread props
         
         Show(when' = !!props.tooltip, fallback = !!bakedButton) {
-            Tooltip(placement = Kobalte.Placement.right) {
+            Tooltip(placement = Kobalte.Enums.KobaltePlacement.Right) {
                 TooltipTrigger(class' = "w-full") { bakedButton }
                 TooltipContent(hidden = !!(state() <> State.Collapsed || isMobile())) { props.tooltip }
             }

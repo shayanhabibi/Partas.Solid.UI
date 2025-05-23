@@ -4,7 +4,9 @@ open Fable.Core
 open Fable.Core.JS
 open Fable.Core.JsInterop
 open Partas.Solid
+open Partas.Solid.Experimental.U
 open Partas.Solid.Motion
+open Partas.Solid.Style
 
 [<AutoOpen; Erase>]
 module ShowExtension =
@@ -30,21 +32,18 @@ type WordRotate() =
         Presence(exitBeforeEnter = true) {
             Show(when' = !!(index() + 1), keyed = true) {
                 Motion(
-                    initial = jsOptions<MotionStyle>(
-                        fun o ->
-                            o.opacity  <- !!0
-                            o.y <- !!(-50)
-                        ),
-                    animate = jsOptions<MotionStyle>(
-                        fun o ->
-                            o.opacity <- !!1
-                            o.y <- !!0
-                    ),
-                    exit = jsOptions<MotionStyle>(
-                        fun o ->
-                            o.opacity <- !!0
-                            o.y <- !!50
-                    ),
+                    initial = createObj [
+                        MotionStyle.opacity "0"
+                        MotionStyle.y -50
+                    ],
+                    animate = createObj [
+                        MotionStyle.opacity "1"
+                        MotionStyle.y 0
+                    ],
+                    exit = createObj [
+                        MotionStyle.opacity "0"
+                        MotionStyle.y 50
+                    ],
                     transition = jsOptions<AnimationOptions>(
                         fun o ->
                             o.duration <- Some 0.25

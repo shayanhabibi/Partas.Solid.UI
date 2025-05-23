@@ -17,16 +17,14 @@ type WordPullup() =
             For(each = props.text.Split(" ")) {
                 yield fun letter index ->
                     Motion(
-                        initial = jsOptions<MotionStyle>(
-                            fun o ->
-                                o.y <- !!20
-                                o.opacity <- !!0
-                        ),
-                        inView = jsOptions<MotionStyle>(
-                            fun o ->
-                                o.y <- !!0
-                                o.opacity <- !!1
-                        ),
+                        initial = motionStyle [
+                            MotionStyle.y 20
+                            MotionStyle.opacity "0"
+                        ],
+                        inView = motionStyle [
+                            MotionStyle.y 0
+                            MotionStyle.opacity "1"
+                        ],
                         inViewOptions = {| once = true |},
                         transition = jsOptions<AnimationOptions>(
                             fun o ->

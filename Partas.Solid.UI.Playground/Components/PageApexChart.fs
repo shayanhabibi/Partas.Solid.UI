@@ -5,40 +5,32 @@ open Partas.Solid
 open Partas.Solid.ApexCharts
 open Fable.Core.JsInterop
 open Fable.Core
-open Partas.Solid.ApexCharts.ApexCharts
-open Partas.Solid.ApexCharts.ApexTheme
+open Partas.Solid.Experimental.U
 
 [<Erase>]
 type PageApexChart() =
     inherit VoidNode()
     [<SolidTypeComponentAttribute>]
     member props.constructor =
-        let options,setOptions = createSignal(jsOptions<ApexOptions>( fun o ->
-            o.theme <- jsOptions<ApexTheme>( fun theme ->
-                theme.monochrome <- monochrome(enabled = true, color = "#1e293b", shadeTo = !!"light"))
-            o.tooltip <- jsOptions<ApexTooltip>( fun tooltip ->
-                tooltip.followCursor <- true)
-            o.xaxis <- jsOptions<ApexXAxis>( fun o -> o.categories <-
-                                                                         [|
-                                                                         1991
-                                                                         1992
-                                                                         1993
-                                                                         1994
-                                                                         1995
-                                                                         1996
-                                                                         1997
-                                                                         1998 |])))
-        let series,setSeries = createSignal<ChartSeries>(unbox<ChartSeries> [|ApexAxisChartSeries(name = "series-1", data = !![| 30; 40; 35; 50; 49; 60; 70; 91 |])|])
+        let options,setOptions = createSignal(Options(
+            theme = Theme(
+                    monochrome = Theme.Monochrome(enabled = true, color = "#1e293b", shadeTo = Enums.Theme.Monochrome.ShadeTo.Light)
+                )
+            ,tooltip = Tooltip(followCursor = true)
+            ,xaxis = XAxis(categories = [| 1991..1998 |])
+        ))
+        let chartseries = AxisChartSeries(name = "series-1", data = !^[| 30;40;35;50;49;60;70;91 |])
+        let series,setSeries = createSignal([|chartseries|])
         div(class' = "flex w-full items-center justify-center p-8 gap-8") {
             SolidApexCharts(
                     width = "500",
-                    type' = ChartType.bar,
+                    type' = Chart.Type.Bar,
                     options = options(),
                     series = series()
                 )
             SolidApexCharts(
                     width = "500",
-                    type' = ChartType.line,
+                    type' = Chart.Type.Line,
                     options = options(),
                     series = series()
                 )

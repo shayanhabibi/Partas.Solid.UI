@@ -8,10 +8,10 @@ open Partas.Solid.Polymorphism
 open Fable.Core
 
 let sheetPositions = [|
-    Placement.top
-    Placement.right
-    Placement.bottom
-    Placement.left
+    Enums.KobaltePlacement.Top
+    KobaltePlacement.Right
+    KobaltePlacement.Bottom
+    KobaltePlacement.Left
 |]
 
 [<Erase>]

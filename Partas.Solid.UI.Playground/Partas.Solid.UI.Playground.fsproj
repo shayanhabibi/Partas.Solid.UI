@@ -9,7 +9,6 @@
         <Content Include="vite.config.mts" />
         <Content Include="index.css" />
         <Content Include="index.html" />
-        <Compile Include="Codeblock.fs" />
         <Compile Include="Components\PageAccordion.fs" />
         <Compile Include="Components\PageAlert.fs" />
         <Compile Include="Components\PageAlertDialog.fs" />
@@ -59,11 +58,13 @@
         <Compile Include="Components\PageApexChart.fs" />
         <Compile Include="Components\PageTextEffects.fs" />
         <Compile Include="App.fs" />
+        <Compile Include="Root.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Partas.Solid" Version="0.2.27" />
+      <PackageReference Update="FSharp.Core" Version="9.0.300" />
+      <PackageReference Include="Partas.Solid" Version="1.0.0-alpha3" />
     </ItemGroup>
 
     <ItemGroup>
