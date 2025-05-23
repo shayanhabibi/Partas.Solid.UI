@@ -4,7 +4,21 @@ open Partas.Solid
 open Fable.Core
 
 [<Erase>]
+module Badge =
+    [<RequireQualifiedAccess; StringEnum>]
+    type Variant =
+        | Default
+        | Secondary
+        | Outline
+        | Success
+        | Warning
+        | Error
+        
+open Badge
+
+[<Erase>]
 module badge =
+    [<System.Obsolete("Use Badge.variants with Badge.Variant instead")>]
     let variants =
         Lib.cva
             "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
@@ -19,32 +33,33 @@ module badge =
                defaultVariants = {| variant = "default" |} |}
 
     [<StringEnum(CaseRules.LowerAll)>]
-    type variant =
-        | Default
-        | Secondary
-        | Outline
-        | Success
-        | Warning
-        | Error
+    type variant = Badge.Variant
 
 [<Erase>]
 type Badge() =
     inherit div()
-
+    static member variants(?variant: Badge.Variant): string =
+        let variant = defaultArg variant Badge.Variant.Default
+        "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 " +
+        match variant with
+        | Variant.Default -> "border-transparent bg-primary text-primary-foreground"
+        | Variant.Secondary -> "border-transparent bg-secondary text-secondary-foreground"
+        | Variant.Outline -> "text-foreground"
+        | Variant.Success -> "border-success-foreground bg-success text-success-foreground"
+        | Variant.Warning -> "border-warning-foreground bg-warning text-warning-foreground"
+        | Variant.Error -> "border-error-foreground bg-error text-error-foreground"
     [<Erase>]
-    member val variant: badge.variant = unbox null with get, set
-
+    member val variant: Variant = unbox null with get, set
     [<Erase>]
     member val round: bool = unbox null with get, set
 
     [<SolidTypeComponent>]
     member props.constructor =
-        let round = if props.round then "rounded-full" else ""
         div(
             class' =
                 Lib.cn
-                    [| badge.variants ({| variant = props.variant |})
-                       round
+                    [| Badge.variants(props.variant)
+                       if props.round then "rounded-full" else ""
                        props.class' |]
         )
             .spread

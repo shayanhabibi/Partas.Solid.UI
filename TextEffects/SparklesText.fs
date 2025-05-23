@@ -46,17 +46,17 @@ type Sparkle() =
                 MotionStyle.opacity "0"
             ],
             animate = motionStyle [
-                MotionStyle.opacity "0,1,0"
-                MotionStyle.scale $"0, {props.scale}, 0"
-                MotionStyle.rotate "75,120,150"
+                MotionStyle.opacity !![|0;1;0|]
+                MotionStyle.scale !![|0; !!props.scale; 0|]
+                MotionStyle.rotate !![|75;120;150|]
             ],
             transition = jsOptions<AnimationOptions>(fun o ->
                 o.duration <- !!1.2
                 o.repeat <- !!Constructors.Number.MAX_SAFE_INTEGER
                 o.delay <- !!props.delay
-                ),
-            style = $"{{ left: {props.x}; top: {props.y} }}"
-        )   .attr("width", "21")
+                )
+        )   .style'([Style.Style.left props.x; Style.Style.top props.y])
+            .attr("width", "21")
             .attr("height", "21")
             .attr("viewBox", "0 0 21 21")
             {

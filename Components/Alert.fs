@@ -1,35 +1,35 @@
 ﻿namespace Partas.Solid.UI
 
+open System
 open Partas.Solid
 open Partas.Solid.Kobalte
 open Fable.Core
 open Fable.Core.JsInterop
 
 [<Erase>]
-module alert =
-    let variants =
-        Lib.cva
-            "relative w-full rounded-lg border p-4 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg~*]:pl-7"
-            {| variants =
-                {| variant =
-                    {| ``default`` = "bg-background text-foreground"
-                       destructive =
-                        "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive" |} |}
-               defaultVariants = {| variant = "default" |} |}
-    
-    type [<Erase>] variant =
-        static member inline ``default``: variant = !!"default"
-        static member inline destructive: variant = !!"destructive"
+module Alert =
+    [<RequireQualifiedAccess; StringEnum>]
+    type Variant =
+        | Default
+        | Destructive
+
+
 
 [<Erase>]
 type Alert() =
     inherit Kobalte.Alert()
+    static member variants (?variant: Alert.Variant): string =
+        let variant = defaultArg variant Alert.Variant.Default
+        "relative w-full rounded-lg border p-4 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg~*]:pl-7 " +
+        match variant with
+        | Alert.Variant.Default -> "bg-background text-foreground"
+        | Alert.Variant.Destructive -> "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive"
     [<Erase>]
-    member val variant: alert.variant = jsNative with get,set
+    member val variant: Alert.Variant = jsNative with get,set
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.Alert(class' = Lib.cn [|
-            alert.variants({|variant = props.variant|})
+            Alert.variants(props.variant)
             props.class'
         |]).spread props
 
@@ -53,3 +53,19 @@ type AlertDescription() =
             props.class'
         |]).spread props
 
+[<Erase>]
+module alert =
+    [<Obsolete("Use Alert.variants with Alert.Variant instead")>]
+    let variants =
+        Lib.cva
+            "relative w-full rounded-lg border p-4 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg~*]:pl-7"
+            {| variants =
+                {| variant =
+                    {| ``default`` = "bg-background text-foreground"
+                       destructive =
+                        "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive" |} |}
+               defaultVariants = {| variant = "default" |} |}
+    
+    type [<Erase>] variant =
+        static member inline ``default``: Alert.Variant = Alert.Variant.Default
+        static member inline destructive: Alert.Variant = Alert.Variant.Destructive
