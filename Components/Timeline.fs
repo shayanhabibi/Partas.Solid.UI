@@ -4,7 +4,6 @@ open System
 open Partas.Solid
 open Partas.Solid.Aria
 open Fable.Core
-open Partas.Solid.Style
 
 [<Erase>]
 type private TimelineItemBullet() =

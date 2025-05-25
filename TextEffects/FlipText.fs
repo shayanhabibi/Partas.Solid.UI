@@ -8,9 +8,9 @@ open Fable.Core
 open System
 
 [<Pojo>]
-type FlipTextStates(?initial: MotionStyle, ?animate: MotionStyle) =
-    member val initial = initial |> Option.defaultValue Unchecked.defaultof<MotionStyle> with get,set
-    member val animate = animate |> Option.defaultValue Unchecked.defaultof<MotionStyle> with get,set
+type FlipTextStates(?initial: IMotionStyle list, ?animate: IMotionStyle list) =
+    member val initial = initial |> Option.defaultValue Unchecked.defaultof<IMotionStyle list> with get,set
+    member val animate = animate |> Option.defaultValue Unchecked.defaultof<IMotionStyle list> with get,set
 
 [<Erase>]
 type FlipText() =
@@ -24,15 +24,13 @@ type FlipText() =
         props.duration <- 0.5
         props.delayMultiple <- 0.08
         props.states <- FlipTextStates(
-                initial =
-                    motionStyle [
+                initial = [
                         MotionStyle.rotateX -90
-                        MotionStyle.opacity "0"
+                        MotionStyle.opacity 0
                     ],
-                animate =
-                    motionStyle [
+                animate = [
                         MotionStyle.rotateX 0
-                        MotionStyle.opacity "1"
+                        MotionStyle.opacity 1
                     ]
             )
         div(class' = Lib.cn [| "flex"; props.class' |]) {
@@ -41,9 +39,10 @@ type FlipText() =
                     Motion(
                         initial = props.states.initial,
                         inView = props.states.animate,
-                        transition = jsOptions<AnimationOptions>(fun o ->
-                            o.duration <- !!props.duration
-                            o.delay <- !!(!!index() * props.delayMultiple) )
+                        transition = [
+                            MotionTransition.duration props.duration
+                            MotionTransition.delay (!!index() * props.delayMultiple)
+                        ]
                     ) {
                         if letter = " " then "\u00a0"
                         else letter

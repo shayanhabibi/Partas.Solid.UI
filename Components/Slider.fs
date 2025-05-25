@@ -33,7 +33,10 @@ type SliderThumb() =
     member props.constructor =
         Slider.Thumb(
             class' = Lib.cn [|
-                "top-[-6px] block size-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                "top-[-6px] block size-5 rounded-full border-2 border-primary
+                bg-background ring-offset-background transition-colors focus-visible:outline-none
+                focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+                disabled:pointer-events-none disabled:opacity-50"
                 props.class'
             |]
         ).spread props { Slider.Input() }

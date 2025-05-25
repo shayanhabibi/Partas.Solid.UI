@@ -12,24 +12,24 @@ type PageButton() =
     member props.constructor =
         div(class' = "flex gap-8 p-6") {
             For(each = [|
-                button.variant.default', "Default"
-                button.variant.destructive, "Destructive"
-                button.variant.ghost, "Ghost"
-                button.variant.link, "Link"
-                button.variant.outline, "Outline"
-                button.variant.secondary, "Secondary"
+                Button.Variant.Default, "Default"
+                Button.Variant.Destructive, "Destructive"
+                Button.Variant.Ghost, "Ghost"
+                Button.Variant.Link, "Link"
+                Button.Variant.Outline, "Outline"
+                Button.Variant.Secondary, "Secondary"
             |]) {
                 yield fun (variant, variantName) index ->
                     div(class' = "flex flex-col gap-4") {
                         For(each = [|
-                            button.size.default'
-                            button.size.lg
-                            button.size.sm
-                            button.size.icon
+                            Button.Size.Default
+                            Button.Size.Large
+                            Button.Size.Small
+                            Button.Size.Icon
                         |]) {
                             yield fun size index ->
                                 Button(size =  size, variant = variant) {
-                                    if size = button.size.icon then
+                                    if size = Button.Size.Icon then
                                         Lucide.Lucide.Atom()
                                     else
                                         variantName

@@ -85,7 +85,7 @@ type BarList() =
                         div(class' = "grow") {
                             div(class' = Lib.cn [|
                                 "flex h-8 items-center rounded-md bg-secondary px-2"
-                            |]).style'({| width = $"{widths()[index()]}%%" |}) {
+                            |]).style'([ Style.width $"{widths()[index()]}%%" ]) {
                                 if !!item.icon then Dynamic(component' = item.icon(), class' = "mr-2 size-5 flex-none")
                                 if !!item.href then
                                     a(href = item.href,

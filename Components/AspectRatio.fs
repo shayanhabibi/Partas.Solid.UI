@@ -2,6 +2,7 @@
 
 open Fable.Core
 open Partas.Solid
+open Partas.Solid.Types.Style
 
 [<Erase>]
 type AspectRatio() =
@@ -10,14 +11,17 @@ type AspectRatio() =
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         props.ratio <- 1./1.
-        div().style' {| position = "relative"; width = "100%"; ``padding-bottom`` = $"{100. / props.ratio}%%" |} {
-            div()
-                .style'({|
-                    position = "absolute"
-                    top = 0
-                    right = 0
-                    bottom = 0
-                    left = 0
-                |})
+        div().style'([
+            Style.position Position.Relative
+            Style.width "100%"
+            Style.paddingBottom $"{100. / props.ratio}%%"
+        ]) {
+            div().style'([
+                Style.position Position.Absolute
+                Style.top "0"
+                Style.right "0"
+                Style.bottom "0"
+                Style.left "0"
+            ])
                 .spread props
         }

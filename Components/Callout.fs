@@ -11,23 +11,6 @@ module Callout =
         | Success
         | Warning
         | Error
-
-[<Erase>]
-module callout =
-    [<System.Obsolete("Use Callout.variants with Callout.Variant instead")>]
-    let variants = 
-        Lib.cva
-            "rounded-md border-l-4 p-2 pl-4"
-                {| variants =
-                    {| variant =
-                        {| ``default`` = "border-info-foreground bg-info text-info-foreground"
-                           success = "border-success-foreground bg-success text-success-foreground"
-                           warning = "border-warning-foreground bg-warning text-warning-foreground"
-                           error = "border-error-foreground bg-error text-error-foreground" |} |}
-                   defaultVariants = {| variant = "default" |} |}
-    
-    [<StringEnum>]
-    type variant = Callout.Variant
         
 [<Erase>]
 type Callout() =

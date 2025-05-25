@@ -20,9 +20,16 @@ type NavigationMenuViewport() =
         Kobalte.NavigationMenu.Viewport(
             class' = Lib.cn [|
                 // base settings
-                "pointer-events-none z-[1000] flex h-[var(--kb-navigation-menu-viewport-height)] w-[var(--kb-navigation-menu-viewport-width)] origin-[var(--kb-menu-content-transform-origin)] items-center justify-center overflow-x-clip overflow-y-visible rounded-md border bg-popover opacity-0 shadow-lg data-[expanded]:pointer-events-auto data-[orientation=vertical]:overflow-y-clip data-[orientation=vertical]:overflow-x-visible data-[expanded]:rounded-md"
+                "pointer-events-none z-[1000] flex h-[var(--kb-navigation-menu-viewport-height)]
+                w-[var(--kb-navigation-menu-viewport-width)] origin-[var(--kb-menu-content-transform-origin)]
+                items-center justify-center overflow-x-clip overflow-y-visible
+                rounded-md border bg-popover opacity-0 shadow-lg
+                data-[expanded]:pointer-events-auto data-[orientation=vertical]:overflow-y-clip
+                data-[orientation=vertical]:overflow-x-visible data-[expanded]:rounded-md"
                 // animation
-                "animate-content-hide transition-[width,height] duration-200 ease-in data-[expanded]:animate-content-show data-[expanded]:opacity-100 data-[expanded]:ease-out"
+                "animate-content-hide transition-[width,height]
+                duration-200 ease-in data-[expanded]:animate-content-show
+                data-[expanded]:opacity-100 data-[expanded]:ease-out"
                 props.class'
             |]).spread props
         
@@ -32,7 +39,8 @@ type NavigationMenu() =
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.NavigationMenu(gutter=6, class'= Lib.cn [|
-            "group/menu flex w-max flex-1 list-none items-center justify-center data-[orientation=vertical]:flex-col [&>li]:w-full"
+            "group/menu flex w-max flex-1 list-none items-center
+            justify-center data-[orientation=vertical]:flex-col [&>li]:w-full"
             props.class'
         |]).spread(props) {
             props.children
@@ -75,17 +83,23 @@ type NavigationMenuContent() =
         Kobalte.NavigationMenu.Portal() {
             Kobalte.NavigationMenu.Content(class' = Lib.cn [|
                 // base settings
-                "pointer-events-none absolute left-0 top-0 box-border p-4 focus:outline-none data-[expanded]:pointer-events-auto"
+                "pointer-events-none absolute left-0 top-0 box-border p-4
+                focus:outline-none data-[expanded]:pointer-events-auto"
                 // base animation settings
-                "data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out"
+                "data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out
+                data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out"
                 // left to right
-                "data-[orientation=horizontal]:data-[motion=from-start]:slide-in-from-left-52 data-[orientation=horizontal]:data-[motion=to-end]:slide-out-to-right-52"
+                "data-[orientation=horizontal]:data-[motion=from-start]:slide-in-from-left-52
+                data-[orientation=horizontal]:data-[motion=to-end]:slide-out-to-right-52"
                 // right to left
-                "data-[orientation=horizontal]:data-[motion=from-end]:slide-in-from-right-52 data-[orientation=horizontal]:data-[motion=to-start]:slide-out-to-left-52"
+                "data-[orientation=horizontal]:data-[motion=from-end]:slide-in-from-right-52
+                data-[orientation=horizontal]:data-[motion=to-start]:slide-out-to-left-52"
                 // top to bottom
-                "data-[orientation=vertical]:data-[motion=from-start]:slide-in-from-top-52 data-[orientation=vertical]:data-[motion=to-end]:slide-out-to-bottom-52"
+                "data-[orientation=vertical]:data-[motion=from-start]:slide-in-from-top-52
+                data-[orientation=vertical]:data-[motion=to-end]:slide-out-to-bottom-52"
                 //bottom to top
-                "data-[orientation=vertical]:data-[motion=from-end]:slide-in-from-bottom-52 data-[orientation=vertical]:data-[motion=to-start]:slide-out-to-bottom-52"
+                "data-[orientation=vertical]:data-[motion=from-end]:slide-in-from-bottom-52
+                data-[orientation=vertical]:data-[motion=to-start]:slide-out-to-bottom-52"
                 props.class'
             |]).spread(props)
         }
@@ -97,7 +111,9 @@ type NavigationMenuLink() =
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.NavigationMenu.Item(class' = Lib.cn [|
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors  hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline
+            outline-none transition-colors  hover:text-accent-foreground
+            focus:bg-accent focus:text-accent-foreground"
             props.class'
         |]).spread(props)
 

@@ -12,7 +12,7 @@ type PageHoverCard() =
     [<SolidTypeComponent>]
     member props.coonstructor =
         HoverCard() {
-            HoverCardTrigger().as'(Button(variant = button.variant.link)) {
+            HoverCardTrigger().as'(Button(variant = Button.Variant.Link)) {
                 "@partas.solid"
             }
             HoverCardContent(class' = "w-80") {

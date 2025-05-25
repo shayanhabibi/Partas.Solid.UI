@@ -16,7 +16,8 @@ type NumberFieldGroup() =
     [<SolidTypeComponent>]
     member props.constructor =
         div(class' = Lib.cn [|
-            "relative rounded-md focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
+            "relative rounded-md focus-within:ring-2
+            focus-within:ring-ring focus-within:ring-offset-2"
             props.class'
         |]).spread props
 [<Erase>]
@@ -25,7 +26,8 @@ type NumberFieldLabel() =
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.NumberField.Label(class'= Lib.cn [|
-            "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            "text-sm font-medium leading-none
+            peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             props.class'
         |]).spread(props)
 [<Erase>]
@@ -34,7 +36,11 @@ type NumberFieldInput() =
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.NumberField.Input(class' = Lib.cn [|
-            "flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[invalid]:border-error-foreground data-[invalid]:text-error-foreground"
+            "flex h-10 w-full rounded-md border border-input bg-transparent
+            px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent
+            file:text-sm file:font-medium placeholder:text-muted-foreground
+            focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50
+            data-[invalid]:border-error-foreground data-[invalid]:text-error-foreground"
             props.class'
         |]).spread props
 [<Erase>]

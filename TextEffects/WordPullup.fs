@@ -17,19 +17,20 @@ type WordPullup() =
             For(each = props.text.Split(" ")) {
                 yield fun letter index ->
                     Motion(
-                        initial = motionStyle [
+                        initial = [
                             MotionStyle.y 20
-                            MotionStyle.opacity "0"
+                            MotionStyle.opacity 0
                         ],
-                        inView = motionStyle [
+                        inView = [
                             MotionStyle.y 0
-                            MotionStyle.opacity "1"
+                            MotionStyle.opacity 1
                         ],
-                        inViewOptions = {| once = true |},
-                        transition = jsOptions<AnimationOptions>(
-                            fun o ->
-                                o.delay <- !!(props.delay * !!index())
-                        )
+                        inViewOptions = [
+                            InViewOption.once true
+                        ],
+                        transition = [
+                            MotionTransition.delay (props.delay * !!index())
+                        ]
                     ) {
                         $"{letter}\u00A0"
                     }

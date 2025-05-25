@@ -17,30 +17,13 @@ module Badge =
 open Badge
 
 [<Erase>]
-module badge =
-    [<System.Obsolete("Use Badge.variants with Badge.Variant instead")>]
-    let variants =
-        Lib.cva
-            "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-            {| variants =
-                {| variant =
-                    {| ``default`` = "border-transparent bg-primary text-primary-foreground"
-                       secondary = "border-transparent bg-secondary text-secondary-foreground"
-                       outline = "text-foreground"
-                       success = "border-success-foreground bg-success text-success-foreground"
-                       warning = "border-warning-foreground bg-warning text-warning-foreground"
-                       error = "border-error-foreground bg-error text-error-foreground" |} |}
-               defaultVariants = {| variant = "default" |} |}
-
-    [<StringEnum(CaseRules.LowerAll)>]
-    type variant = Badge.Variant
-
-[<Erase>]
 type Badge() =
     inherit div()
     static member variants(?variant: Badge.Variant): string =
         let variant = defaultArg variant Badge.Variant.Default
-        "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 " +
+        "inline-flex items-center rounded-md border px-2.5 py-0.5
+        text-xs font-semibold transition-colors focus:outline-none
+        focus:ring-2 focus:ring-ring focus:ring-offset-2 " +
         match variant with
         | Variant.Default -> "border-transparent bg-primary text-primary-foreground"
         | Variant.Secondary -> "border-transparent bg-secondary text-secondary-foreground"

@@ -13,12 +13,12 @@ type PageBadge() =
         div(class' = "flex p-6 gap-8") {
             div(class' = "flex flex-col gap-4") {
                 For(each = [|
-                    "Default", badge.variant.Default
-                    "Secondary", badge.variant.Secondary
-                    "Error", badge.variant.Error
-                    "Outline", badge.variant.Outline
-                    "Success", badge.variant.Success
-                    "Warning", badge.variant.Warning
+                    "Default", Badge.Variant.Default
+                    "Secondary", Badge.Variant.Secondary
+                    "Error", Badge.Variant.Error
+                    "Outline", Badge.Variant.Outline
+                    "Success", Badge.Variant.Success
+                    "Warning", Badge.Variant.Warning
                 |]) {
                     yield fun (name, variant) index ->
                         Badge(variant = variant) { name }
@@ -26,12 +26,12 @@ type PageBadge() =
             }
             div(class' = "flex flex-col gap-4") {
                 For(each = [|
-                    badgeDelta.Unchanged, "Default", badge.variant.Default
-                    badgeDelta.Increase, "Secondary", badge.variant.Secondary
-                    badgeDelta.Decrease, "Error", badge.variant.Error
-                    badgeDelta.ModerateIncrease, "Outline", badge.variant.Outline
-                    badgeDelta.ModerateDecrease, "Success", badge.variant.Success
-                    badgeDelta.Unchanged, "Warning", badge.variant.Warning
+                    badgeDelta.Unchanged, "Default", Badge.Variant.Default
+                    badgeDelta.Increase, "Secondary", Badge.Variant.Secondary
+                    badgeDelta.Decrease, "Error", Badge.Variant.Error
+                    badgeDelta.ModerateIncrease, "Outline", Badge.Variant.Outline
+                    badgeDelta.ModerateDecrease, "Success", Badge.Variant.Success
+                    badgeDelta.Unchanged, "Warning", Badge.Variant.Warning
                 |]) {
                     yield fun (badgeDelta, name, variant) index ->
                         BadgeDelta(deltaType = badgeDelta, variant = variant) { name }
@@ -51,12 +51,12 @@ type PageBadge() =
             }
             div(class' = "flex flex-col gap-4") {
                 For(each = [|
-                    "Default", badge.variant.Default
-                    "Secondary", badge.variant.Secondary
-                    "Error", badge.variant.Error
-                    "Outline", badge.variant.Outline
-                    "Success", badge.variant.Success
-                    "Warning", badge.variant.Warning
+                    "Default", Badge.Variant.Default
+                    "Secondary", Badge.Variant.Secondary
+                    "Error", Badge.Variant.Error
+                    "Outline", Badge.Variant.Outline
+                    "Success", Badge.Variant.Success
+                    "Warning", Badge.Variant.Warning
                 |]) {
                     yield fun (name, variant) index ->
                         Badge(variant = variant, round = true) { name }
@@ -64,12 +64,12 @@ type PageBadge() =
             }
             div(class' = "flex flex-col gap-4") {
                 For(each = [|
-                    badgeDelta.Unchanged, "Default", badge.variant.Default
-                    badgeDelta.Increase, "Secondary", badge.variant.Secondary
-                    badgeDelta.Decrease, "Error", badge.variant.Error
-                    badgeDelta.ModerateIncrease, "Outline", badge.variant.Outline
-                    badgeDelta.ModerateDecrease, "Success", badge.variant.Success
-                    badgeDelta.Unchanged, "Warning", badge.variant.Warning
+                    badgeDelta.Unchanged, "Default", Badge.Variant.Default
+                    badgeDelta.Increase, "Secondary", Badge.Variant.Secondary
+                    badgeDelta.Decrease, "Error", Badge.Variant.Error
+                    badgeDelta.ModerateIncrease, "Outline", Badge.Variant.Outline
+                    badgeDelta.ModerateDecrease, "Success", Badge.Variant.Success
+                    badgeDelta.Unchanged, "Warning", Badge.Variant.Warning
                 |]) {
                     yield fun (badgeDelta, name, variant) index ->
                         BadgeDelta(deltaType = badgeDelta, variant = variant, round = true) { name }

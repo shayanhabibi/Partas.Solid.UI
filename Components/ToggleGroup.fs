@@ -55,7 +55,8 @@ type ToggleGroupItem() =
                     size = props.size &&= context.size
                     variant = props.variant &&= context.variant
                 |})
-                "hover:bg-muted hover:text-muted-foreground data-[pressed]:bg-accent data-[pressed]:text-accent-foreground"
+                "hover:bg-muted hover:text-muted-foreground
+                data-[pressed]:bg-accent data-[pressed]:text-accent-foreground"
                 props.class'
             |]
             ).spread props

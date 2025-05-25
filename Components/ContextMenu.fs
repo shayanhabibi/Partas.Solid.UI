@@ -46,7 +46,9 @@ type ContextMenuContent() =
     member props.constructor =
         Kobalte.ContextMenu.Portal() {
             Kobalte.ContextMenu.Content(class'= Lib.cn [|
-                "z-50 min-w-32 origin-[var(--kb-menu-content-transform-origin)] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md animate-in"
+                "z-50 min-w-32 origin-[var(--kb-menu-content-transform-origin)]
+                overflow-hidden rounded-md border bg-popover p-1
+                text-popover-foreground shadow-md animate-in"
                 props.class'
             |]).spread(props)
             }
@@ -57,7 +59,10 @@ type ContextMenuItem() =
     member props.constructor =
         Kobalte.ContextMenu.Item(
             class' = Lib.cn [|
-                "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+                "relative flex cursor-default select-none items-center
+                rounded-sm px-2 py-1.5 text-sm outline-none transition-colors
+                focus:bg-accent focus:text-accent-foreground
+                data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
                 props.class'
             |]).spread(props)
 [<Erase>]
@@ -83,7 +88,9 @@ type ContextMenuSubTrigger() =
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.ContextMenu.SubTrigger(class'= Lib.cn [|
-            "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent"
+            "flex cursor-default select-none items-center
+            rounded-sm px-2 py-1.5 text-sm outline-none
+            focus:bg-accent data-[state=open]:bg-accent"
             props.class'
         |]).spread(props) {
             props.children
@@ -95,7 +102,9 @@ type ContextMenuSubContent() =
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.ContextMenu.SubContent(class'= Lib.cn [|
-            "z-50 min-w-32 origin-[var(--kb-menu-content-transform-origin)] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md animate-in"
+            "z-50 min-w-32 origin-[var(--kb-menu-content-transform-origin)]
+            overflow-hidden rounded-md border bg-popover
+            p-1 text-popover-foreground shadow-md animate-in"
             props.class'
         |]).spread(props)
 [<Erase>]
@@ -104,7 +113,10 @@ type ContextMenuCheckboxItem() =
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.ContextMenu.CheckboxItem(class'= Lib.cn [|
-            "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+            "relative flex cursor-default select-none items-center
+            rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none
+            transition-colors focus:bg-accent focus:text-accent-foreground
+            data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
             props.class'
         |]).spread(props) {
             span(class'= "absolute left-2 flex size-3.5 items-center justify-center") {
@@ -126,7 +138,10 @@ type ContextMenuRadioItem() =
     [<SolidTypeComponent>]
     member props.constructor =
         Kobalte.ContextMenu.RadioItem(class'= Lib.cn [|
-            "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:opacity-50"
+            "relative flex cursor-default select-none items-center
+            rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none
+            transition-colors focus:bg-accent focus:text-accent-foreground
+            data-[disabled]:opacity-50"
             props.class'
         |]).spread(props) {
             span(class'="absolute left-2 flex size-3.5 items-center justify-center") {

@@ -42,7 +42,9 @@ type OtpFieldSlot() =
         let showFakeCaret () = context.value().Length = props.index && context.isInserting()
         div(
             class' = Lib.cn [|
-                "group relative flex size-10 items-center justify-center border-y border-r border-input text-sm first:rounded-l-md first:border-l last:rounded-r-md"
+                "group relative flex size-10 items-center justify-center
+                border-y border-r border-input text-sm first:rounded-l-md
+                first:border-l last:rounded-r-md"
                 props.class'
             |]
         ).spread props {

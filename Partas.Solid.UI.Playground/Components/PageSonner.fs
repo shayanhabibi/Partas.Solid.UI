@@ -14,7 +14,7 @@ type PageSonner() =
     member props.constructor =
         Fragment() {
             Button(
-                variant = button.variant.outline,
+                variant = Button.Variant.Outline,
                 onClick = (fun _ ->
                                 Sonner.toast(
                                     "Event has been created",

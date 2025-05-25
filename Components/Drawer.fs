@@ -47,7 +47,7 @@ type DrawerOverlay() =
             "fixed inset-0 z-50 data-[transitioning]:transition-colors data-[transitioning]:duration-300"
             props.class'
         |]).spread(props).style'([
-            Style.Style.backgroundColor $"rgb(0 0 0 / {0.8 * drawerContext?openPercentage()})"
+            Style.backgroundColor $"rgb(0 0 0 / {0.8 * drawerContext?openPercentage()})"
         ])
 [<Erase>]
 type DrawerContent() =
@@ -57,7 +57,11 @@ type DrawerContent() =
         DrawerPortal() {
             DrawerOverlay()
             Corvu.Drawer.Content(class'= Lib.cn [|
-                "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background after:absolute after:inset-x-0 after:top-full after:h-1/2 after:bg-inherit data-[transitioning]:transition-transform data-[transitioning]:duration-300 md:select-none"
+                "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto
+                flex-col rounded-t-[10px] border bg-background
+                after:absolute after:inset-x-0 after:top-full
+                after:h-1/2 after:bg-inherit data-[transitioning]:transition-transform
+                data-[transitioning]:duration-300 md:select-none"
                 props.class'
             |]).spread(props) {
                 div(class'="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted")

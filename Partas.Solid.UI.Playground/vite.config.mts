@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import solidPlugin from 'vite-plugin-solid';
 import tailwindcss from "@tailwindcss/vite";
 
-const repoName = "Partas.Solid.UI.Plaground"
+const repoName = "Partas.Solid.UI.Playground"
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,9 +17,9 @@ export default defineConfig({
         }
     },
     base: `/${repoName}/`,
-    build: {
-        outDir: "output"
-    },
+    // build: {
+    //     outDir: "output"
+    // },
     plugins: [
         solidPlugin(),
         tailwindcss(),

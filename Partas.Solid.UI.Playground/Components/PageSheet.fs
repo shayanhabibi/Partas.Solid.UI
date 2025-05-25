@@ -24,7 +24,7 @@ type PageSheet() =
                 For(each = sheetPositions) {
                     yield fun item index ->
                         Sheet() {
-                            SheetTrigger().as'(Button(variant = button.variant.outline)) { unbox<string> item }
+                            SheetTrigger().as'(Button(variant = Button.Variant.Outline)) { unbox<string> item }
                             SheetContent(position = item) {
                                 SheetHeader() {
                                     SheetTitle() { "Edit Profile" }

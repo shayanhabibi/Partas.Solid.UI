@@ -8,7 +8,7 @@ open Fable.Core.JsInterop
 open System
 
 [<Pojo>]
-type GradualSpacingStates(?hidden: MotionStyle, ?visible: MotionStyle) =
+type GradualSpacingStates(?hidden: IMotionStyle list, ?visible: IMotionStyle list) =
     member val hidden = hidden.Value with get,set
     member val visible = visible.Value with get,set
     
@@ -26,11 +26,11 @@ type GradualSpacing() =
         props.duration <- 0.5
         props.delayMultiple <- 0.04
         props.states <- GradualSpacingStates(
-                hidden = motionStyle [
+                hidden = [
                     MotionStyle.opacity "0"
                     MotionStyle.x -20
                 ],
-                visible = motionStyle [
+                visible = [
                     MotionStyle.opacity "1"
                     MotionStyle.x 0
                 ]
@@ -42,9 +42,10 @@ type GradualSpacing() =
                         initial = props.states.hidden,
                         inView = props.states.visible,
                         exit = props.states.hidden,
-                        transition = jsOptions<AnimationOptions>(fun o ->
-                            o.duration <- Some props.duration
-                            o.delay <-  Some (!!index() * !!props.delayMultiple))
+                        transition = [
+                            MotionTransition.duration props.duration
+                            MotionTransition.delay (!!index() * props.delayMultiple)
+                        ]
                     ) {
                         if letter = " " then "\u00A0" else letter
                     }

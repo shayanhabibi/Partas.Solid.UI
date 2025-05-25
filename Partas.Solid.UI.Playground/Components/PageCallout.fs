@@ -11,10 +11,10 @@ type PageCallout() =
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         let variants = [|
-            "Default", callout.variant.Default
-            "Error", callout.variant.Error
-            "Success", callout.variant.Success
-            "Warning", callout.variant.Warning
+            "Default", Callout.Variant.Default
+            "Error", Callout.Variant.Error
+            "Success", Callout.Variant.Success
+            "Warning", Callout.Variant.Warning
         |]
         div(class' = "w-full p-6 flex flex-col gap-4") {
             For(each = variants) {

@@ -19,7 +19,8 @@ type BreadcrumbList() =
     member props.constructor =
         ol(
             class' = Lib.cn [|
-                "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5"
+                "flex flex-wrap items-center gap-1.5 break-words
+                text-sm text-muted-foreground sm:gap-2.5"
                 props.class'
             |]
         ).spread props
@@ -38,7 +39,8 @@ type BreadcrumbLink() =
     member props.constructor =
         Breadcrumbs.Link(
             class' = Lib.cn [|
-                "transition-colors hover:text-foreground data-[current]:font-normal data-[current]:text-foreground"
+                "transition-colors hover:text-foreground
+                data-[current]:font-normal data-[current]:text-foreground"
                 props.class'
             |]).spread props
 

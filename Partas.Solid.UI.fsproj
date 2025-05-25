@@ -16,7 +16,6 @@
         <Compile Include="Components\Avatar.fs" />
         <Compile Include="Components\Badge.fs" />
         <Compile Include="Components\Breadcrumb.fs" />
-        <Compile Include="Components\KobalteButton.fs" />
         <Compile Include="Components\Callout.fs" />
         <Compile Include="Components\Card.fs" />
         <Compile Include="Components\Checkbox.fs" />
@@ -83,8 +82,8 @@
     <ItemGroup>
       <PackageReference Include="Fable.Core" Version="4.5.0" />
       <PackageReference Update="FSharp.Core" Version="9.0.300" />
-      <PackageReference Include="Partas.Solid" Version="1.0.0-alpha3" />
-      <PackageReference Include="Partas.Solid.Cva" Version="0.1.0" />
+      <PackageReference Include="Partas.Solid" Version="1.0.0-alpha4" />
+      <PackageReference Include="Partas.Solid.Primitives.Media" Version="0.1.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -96,7 +95,6 @@
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Kobalte\Partas.Solid.Kobalte.fsproj" />
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Lucide\Partas.Solid.Lucide.fsproj" />
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Motion\Partas.Solid.Motion.fsproj" />
-      <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.Primitives\Partas.Solid.Primitives.fsproj" />
       <ProjectReference Include="Partas.Solid.Bindings\Partas.Solid.TanStack.Table\Partas.Solid.TanStack.Table.fsproj" />
       <ProjectReference Include="Partas.Solid.Sonner\Partas.Solid.Sonner.fsproj" />
     </ItemGroup>

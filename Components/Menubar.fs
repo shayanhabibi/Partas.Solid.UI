@@ -63,7 +63,8 @@ type MenubarContent() =
         MenubarPortal() {
             Menubar.Content(class' = Lib.cn [|
                 "z-50 min-w-48 origin-[var(--kb-menu-content-transform-origin)] animate-content-hide
-                overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[expanded]:animate-content-show"
+                overflow-hidden rounded-md border bg-popover
+                p-1 text-popover-foreground shadow-md data-[expanded]:animate-content-show"
                 props.class'
             |]).spread props
         }
@@ -74,7 +75,9 @@ type MenubarSubTrigger() =
     [<SolidTypeComponent>]
     member props.constructor =
         Menubar.SubTrigger(class'=Lib.cn [|
-            "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground"
+            "flex cursor-default select-none items-center rounded-sm px-2 py-1.5
+            text-sm outline-none focus:bg-accent focus:text-accent-foreground
+            data-[state=open]:bg-accent data-[state=open]:text-accent-foreground"
             props.inset &&= "pl-8"
             props.class'
         |]).spread(props) {
@@ -88,7 +91,9 @@ type MenubarSubContent() =
     member props.constructor =
         MenubarPortal() {
             Menubar.SubContent(class' = Lib.cn [|
-                "z-50 min-w-32 origin-[var(--kb-menu-content-transform-origin)] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md animate-in"
+                "z-50 min-w-32 origin-[var(--kb-menu-content-transform-origin)]
+                overflow-hidden rounded-md border bg-popover p-1
+                text-popover-foreground shadow-md animate-in"
                 props.class'
             |]).spread(props)
         }
@@ -100,7 +105,10 @@ type MenubarItem() =
     member props.constructor =
         Menubar.Item(
             class' = Lib.cn [|
-                "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+                "relative flex cursor-default select-none items-center rounded-sm
+                px-2 py-1.5 text-sm outline-none focus:bg-accent
+                focus:text-accent-foreground data-[disabled]:pointer-events-none
+                data-[disabled]:opacity-50"
                 props.inset &&= "pl-8"
                 props.class'
             |]).spread(props)
@@ -110,7 +118,10 @@ type MenubarCheckboxItem() =
     [<SolidTypeComponent>]
     member props.constructor =
         Menubar.CheckboxItem(class'= Lib.cn [|
-            "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+            "relative flex cursor-default select-none items-center rounded-sm
+            py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent
+            focus:text-accent-foreground data-[disabled]:pointer-events-none
+            data-[disabled]:opacity-50"
             props.class'
         |]).spread(props) {
             span(class'="absolute left-2 flex size-3.5 items-center justify-center") {
@@ -126,7 +137,10 @@ type MenubarRadioItem() =
     [<SolidTypeComponent>]
     member props.constructor =
         Menubar.RadioItem(class' = Lib.cn [|
-            "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+            "relative flex cursor-default select-none items-center rounded-sm
+            py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent
+            focus:text-accent-foreground data-[disabled]:pointer-events-none
+            data-[disabled]:opacity-50"
             props.class'
         |]).spread(props) {
             span(class'="absolute left-2 flex size-3.5 items-center justify-center") {

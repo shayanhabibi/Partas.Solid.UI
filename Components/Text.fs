@@ -65,7 +65,13 @@ type TextFieldInput() =
     member props.constructor =
         props.type' <- textFieldInput.Text
         TextField.Input(class' = Lib.cn [|
-            "flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[invalid]:border-error-foreground data-[invalid]:text-error-foreground"
+            "flex h-10 w-full rounded-md border border-input
+            bg-transparent px-3 py-2 text-sm ring-offset-background
+            file:border-0 file:bg-transparent file:text-sm file:font-medium
+            placeholder:text-muted-foreground focus-visible:outline-none
+            focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+            disabled:cursor-not-allowed disabled:opacity-50
+            data-[invalid]:border-error-foreground data-[invalid]:text-error-foreground"
             props.class'
         |], type' = unbox<string> props.type').spread props
 
@@ -75,7 +81,11 @@ type TextFieldTextArea() =
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         TextField.TextArea(class' = Lib.cn [|
-            "flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            "flex min-h-[80px] w-full rounded-md border border-input
+            bg-background px-3 py-2 text-sm ring-offset-background
+            placeholder:text-muted-foreground focus-visible:outline-none
+            focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+            disabled:cursor-not-allowed disabled:opacity-50"
             props.class'
         |]).spread props
 

@@ -20,7 +20,11 @@ type Alert() =
     inherit Kobalte.Alert()
     static member variants (?variant: Alert.Variant): string =
         let variant = defaultArg variant Alert.Variant.Default
-        "relative w-full rounded-lg border p-4 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg~*]:pl-7 " +
+        "relative w-full rounded-lg border p-4
+        [&>svg+div]:translate-y-[-3px]
+        [&>svg]:absolute [&>svg]:left-4
+        [&>svg]:top-4 [&>svg]:text-foreground
+        [&>svg~*]:pl-7 " +
         match variant with
         | Alert.Variant.Default -> "bg-background text-foreground"
         | Alert.Variant.Destructive -> "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive"
@@ -58,7 +62,9 @@ module alert =
     [<Obsolete("Use Alert.variants with Alert.Variant instead")>]
     let variants =
         Lib.cva
-            "relative w-full rounded-lg border p-4 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg~*]:pl-7"
+            "relative w-full rounded-lg border p-4 [&>svg+div]:translate-y-[-3px]
+            [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4
+            [&>svg]:text-foreground [&>svg~*]:pl-7"
             {| variants =
                 {| variant =
                     {| ``default`` = "bg-background text-foreground"

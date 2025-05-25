@@ -72,7 +72,12 @@ type DatePickerInput() =
     member props.constructor =
         DatePicker.Input(
             class' = Lib.cn [|
-                "h-9 w-full rounded-md border border-border bg-background px-3 py-1 text-sm shadow-sm transition-shadow placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                "h-9 w-full rounded-md border border-border
+                bg-background px-3 py-1 text-sm shadow-sm
+                transition-shadow placeholder:text-muted-foreground
+                focus-visible:outline-none focus-visible:ring-[1.5px]
+                focus-visible:ring-ring disabled:cursor-not-allowed
+                disabled:opacity-50"
                 props.class'
             |]
         ).spread props
@@ -86,7 +91,12 @@ type DatePickerTrigger() =
         let hasChildren = fun _ -> resolvedChildren |> JS.Constructors.Array.from |> _.Length <> 0
         DatePicker.Trigger(
             class' = Lib.cn [|
-                "flex min-h-9 min-w-9 items-center justify-center rounded-md border border-border bg-background transition-[box-shadow,background-color] hover:bg-accent/50 focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 [&>svg]:size-4"
+                "flex min-h-9 min-w-9 items-center justify-center
+                rounded-md border border-border bg-background
+                transition-[box-shadow,background-color] hover:bg-accent/50
+                focus-visible:outline-none focus-visible:ring-[1.5px]
+                focus-visible:ring-ring disabled:cursor-not-allowed
+                disabled:opacity-50 [&>svg]:size-4"
                 props.class'
             |]
         ).spread props {
@@ -100,7 +110,11 @@ type DatePickerContent() =
     member props.constructor =
         DatePicker.Content(
             class' = Lib.cn [|
-                "z-50 rounded-md border bg-popover p-3 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95"
+                "z-50 rounded-md border bg-popover p-3 text-popover-foreground
+                shadow-md outline-none data-[state=open]:animate-in
+                data-[state=closed]:animate-out data-[state=closed]:fade-out-0
+                data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95
+                data-[state=open]:zoom-in-95"
                 props.class'
             |]
         ).spread props { props.children }
@@ -133,7 +147,7 @@ type DatePickerPrevTrigger() =
         let hasChildren = fun _ -> resolvedChildren |> JS.Constructors.Array.from |> _.Length <> 0
         DatePicker.PrevTrigger(
             class' = Lib.cn [|
-                button.variants({| variant = "outline" |})
+                Button.variants(Button.Variant.Outline)
                 "size-7 bg-transparent p-0 opacity-50 hover:opacity-100"
                 props.class'
             |]
@@ -150,7 +164,7 @@ type DatePickerNextTrigger() =
         let hasChildren = fun _ -> resolvedChildren |> JS.Constructors.Array.from |> _.Length <> 0
         DatePicker.NextTrigger(
             class' = Lib.cn [|
-                button.variants({| variant = "outline" |})
+                Button.variants(Button.Variant.Outline)
                 "size-7 bg-transparent p-0 opacity-50 hover:opacity-100"
                 props.class'
             |]
@@ -165,7 +179,7 @@ type DatePickerViewTrigger() =
     member props.constructor =
         DatePicker.ViewTrigger(
             class' = Lib.cn [|
-                button.variants({| variant = "ghost" |})
+                Button.variants(Button.Variant.Ghost)
                 "h-7"
                 props.class'
             |]
@@ -216,7 +230,11 @@ type DatePickerTableCell() =
     member props.constructor =
         DatePicker.TableCell(
             class' = Lib.cn [|
-                "flex-1 p-0 text-center text-sm has-[[data-range-end]]:rounded-r-md has-[[data-range-start]]:rounded-l-md has-[[data-in-range]]:bg-accent has-[[data-outside-range][data-in-range]]:bg-accent/50 has-[[data-in-range]]:first-of-type:rounded-l-md has-[[data-in-range]]:last-of-type:rounded-r-md"
+                "flex-1 p-0 text-center text-sm has-[[data-range-end]]:rounded-r-md
+                has-[[data-range-start]]:rounded-l-md has-[[data-in-range]]:bg-accent
+                has-[[data-outside-range][data-in-range]]:bg-accent/50
+                has-[[data-in-range]]:first-of-type:rounded-l-md
+                has-[[data-in-range]]:last-of-type:rounded-r-md"
                 props.class'
             |]
         ).spread props
@@ -228,7 +246,7 @@ type DatePickerTableCellTrigger() =
     member props.constructor =
         DatePicker.TableCellTrigger(
             class' = Lib.cn [|
-                button.variants({| variant = "ghost" |})
+                Button.variants(Button.Variant.Ghost)
                 "size-8 w-full p-0 font-normal data-[selected]:opacity-100"
                 "data-[today]:bg-accent data-[today]:text-accent-foreground"
                 "[&:is([data-today][data-selected])]:bg-primary [&:is([data-today][data-selected])]:text-primary-foreground"

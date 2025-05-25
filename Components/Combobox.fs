@@ -29,7 +29,10 @@ type ComboboxItem() =
     [<SolidTypeComponent>]
     member props.constructor =
         Combobox.Item(class' = Lib.cn [|
-            "relative flex cursor-default select-none items-center justify-between rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:opacity-50"
+            "relative flex cursor-default select-none items-center
+            justify-between rounded-sm px-2 py-1.5 text-sm outline-none
+            data-[disabled]:pointer-events-none data-[highlighted]:bg-accent
+            data-[highlighted]:text-accent-foreground data-[disabled]:opacity-50"
             props.class'
         |]).spread(props)
 [<Erase>]
@@ -64,7 +67,9 @@ type ComboboxInput() =
     [<SolidTypeComponent>]
     member props.constructor =
         Combobox.Input(class' = Lib.cn [|
-            "flex size-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+            "flex size-full rounded-md bg-transparent py-3
+            text-sm outline-none placeholder:text-muted-foreground
+            disabled:cursor-not-allowed disabled:opacity-50"
             props.class'
         |]).spread(props)
     
@@ -86,7 +91,9 @@ type ComboboxContent() =
     member props.constructor =
         Combobox.Portal() {
             Combobox.Content(class' = Lib.cn [|
-                "relative z-50 min-w-32 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md animate-in fade-in-80"
+                "relative z-50 min-w-32 overflow-hidden
+                rounded-md border bg-popover
+                text-popover-foreground shadow-md animate-in fade-in-80"
                 props.class'
             |]).spread(props) {
                 Combobox.Listbox(class'="m-0 p-1")

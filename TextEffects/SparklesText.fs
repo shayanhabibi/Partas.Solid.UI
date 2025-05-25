@@ -1,11 +1,12 @@
 ﻿namespace Partas.Solid.UI
 
 open Partas.Solid
-open Partas.Solid.Motion
 open Partas.Solid.Aria
 open Fable.Core
 open Fable.Core.JS
 open Fable.Core.JsInterop
+open Partas.Solid.Motion
+open Partas.Solid.Experimental.U
 
 [<Pojo>]
 type SparkleOptions
@@ -42,20 +43,20 @@ type Sparkle() =
             tag = "svg",
             class' = "pointer-events-none absolute z-20",
             ariaHidden = true,
-            initial = motionStyle [
-                MotionStyle.opacity "0"
+            initial = [
+                MotionStyle.opacity 0
             ],
-            animate = motionStyle [
-                MotionStyle.opacity !![|0;1;0|]
-                MotionStyle.scale !![|0; !!props.scale; 0|]
-                MotionStyle.rotate !![|75;120;150|]
+            animate = [
+                MotionStyle.opacity !^[|0;1;0|]
+                MotionStyle.scale  !^[|0.; props.scale; 0.|]
+                MotionStyle.rotate !^[|75;120;150|]
             ],
-            transition = jsOptions<AnimationOptions>(fun o ->
-                o.duration <- !!1.2
-                o.repeat <- !!Constructors.Number.MAX_SAFE_INTEGER
-                o.delay <- !!props.delay
+            transition' = AnimationOptions(
+                    duration = 1.2
+                    ,repeat = Constructors.Number.MAX_SAFE_INTEGER
+                    ,delay = props.delay
                 )
-        )   .style'([Style.Style.left props.x; Style.Style.top props.y])
+        )   .style'([Style.left props.x; Style.top props.y])
             .attr("width", "21")
             .attr("height", "21")
             .attr("viewBox", "0 0 21 21")
