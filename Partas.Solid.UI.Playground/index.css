@@ -215,7 +215,7 @@
     --color-popover-foreground: var(--popover-foreground);
 
     --color-card: var(--card);
-    --color-card-foreground: var(--card);
+    --color-card-foreground: var(--card-foreground);
 
     /* Sidebar */
     --color-sidebar: var(--sidebar-background);

@@ -4,7 +4,7 @@ open Partas.Solid.Polymorphism
 open Browser
 open Fable.Core.JS
 open Partas.Solid
-open Partas.Solid.Primitives
+open Partas.Solid.Primitives.Media
 open Partas.Solid.Aria
 open Fable.Core
 open Browser.Types
@@ -70,7 +70,7 @@ module Sidebar =
             createEffect(
                     fun () ->
                         let mobileBreakpointListener =
-                                Media.makeMediaQueryListener
+                                makeMediaQueryListener
                                     $"(max-width:{mobileBreakpoint - 1}px"
                                     (fun event -> setIsMobile(event.matches))
                         onCleanup(mobileBreakpointListener)
