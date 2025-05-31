@@ -78,7 +78,7 @@ type ItemProps = {| item: {| rawValue: {| Label: string |} |} |}
 
 [<Erase>]
 type PageCombobox() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div(class' = "flex w-full p-6") {

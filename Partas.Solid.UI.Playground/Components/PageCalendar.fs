@@ -9,7 +9,7 @@ open Fable.Core.JsInterop
 
 [<Erase>]
 type PageCalendar() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponent>]
     member props.constructor =
         DatePickerRoot(open' = true, class' = "max-w-min") {

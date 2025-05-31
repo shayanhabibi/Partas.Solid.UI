@@ -21,7 +21,7 @@ module PageAccordion =
 
     [<Erase>]
     type PageAccordion() =
-        inherit VoidNode()
+        interface VoidNode
         [<SolidTypeComponentAttribute>]
         member props.constructor =
             div(class' = "size-full") {
@@ -82,7 +82,7 @@ module PageAccordion =
                 //     span() {"""{"            ).spread props\n"}"""}
                 //     span() {"""{"[<Erase>]\n"}"""}
                 //     span() {"""{"type PageAccordion() =\n"}"""}
-                //     span() {"""{"    inherit VoidNode()\n"}"""}
+                //     span() {"""{"    interface VoidNode\n"}"""}
                 //     span() {"""{"    [<SolidTypeComponentAttribute>]\n"}"""}
                 //     span() {"""{"    member props.constructor =\n"}"""}
                 //     span() {"""{"        div(\n"}"""}

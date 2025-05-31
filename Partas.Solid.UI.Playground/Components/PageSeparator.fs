@@ -8,7 +8,7 @@ open Fable.Core
 
 [<Erase>]
 type PageSeparator() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div() {

@@ -8,7 +8,7 @@ open Fable.Core.JsInterop
 
 [<Erase>]
 type PagePagination() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div(class' = "flex w-full p-6") {

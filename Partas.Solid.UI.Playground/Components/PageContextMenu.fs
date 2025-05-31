@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type PageContextMenu() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         let showGitLog,setShowGitLog = createSignal(false)

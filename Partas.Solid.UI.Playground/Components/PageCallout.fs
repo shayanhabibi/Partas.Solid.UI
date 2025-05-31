@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type PageCallout() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         let variants = [|

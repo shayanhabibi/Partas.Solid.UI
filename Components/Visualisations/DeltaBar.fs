@@ -1,6 +1,7 @@
 ﻿namespace Partas.Solid.UI
 
 open Partas.Solid
+open Partas.Solid.Style
 open Fable.Core
 open Fable.Core.JsInterop
 

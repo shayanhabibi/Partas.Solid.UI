@@ -1,6 +1,7 @@
 ﻿namespace Partas.Solid.UI
 
 open Partas.Solid
+open Partas.Solid.Style
 open Partas.Solid.Aria
 open Partas.Solid.UI
 open Partas.Solid.Polymorphism
@@ -9,7 +10,7 @@ open Fable.Core.JsInterop
 
 [<Import("Dynamic", "solid-js/web")>]
 type Dynamic() =
-    inherit RegularNode()
+    interface RegularNode
     [<Erase>] member val component': HtmlTag = unbox null with get,set
 
 [<JS.Pojo>]

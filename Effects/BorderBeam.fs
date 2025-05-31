@@ -25,7 +25,7 @@ open Fable.Core
 /// </summary>
 [<Erase>]
 type BorderBeam() =
-    inherit VoidNode()
+    interface VoidNode
     [<Erase>] member val anchor: int = unbox null with get,set
     [<Erase>] member val borderWidth: float = unbox null with get,set
     [<Erase>] member val colorFrom: string = unbox null with get,set

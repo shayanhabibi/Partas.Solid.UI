@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type PageMenubar() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         Menubar() {

@@ -2,12 +2,13 @@
 
 open System
 open Partas.Solid
+open Partas.Solid.Style
 open Partas.Solid.Aria
 open Fable.Core
 
 [<Erase>]
 type private TimelineItemBullet() =
-    inherit RegularNode()
+    interface RegularNode
     [<Erase>]
     member val isActive: bool = unbox null with get,set
     [<Erase>]
@@ -34,7 +35,7 @@ type private TimelineItemBullet() =
 
 [<Erase>]
 type private TimelineItemTitle() =
-    inherit RegularNode()
+    interface RegularNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div(class' = "mb-1 text-base font-semibold leading-none") { props.children }
@@ -50,7 +51,7 @@ type private TimelineItemDescription() =
 
 [<Erase>]
 type private TimelineItem() =
-    inherit RegularNode()
+    interface RegularNode
     [<Erase>]
     member val title: HtmlElement = unbox null with get,set
     [<Erase>]
@@ -111,7 +112,7 @@ module Timeline =
 
 [<Erase>]
 type Timeline() =
-    inherit VoidNode()
+    interface VoidNode
     [<Erase>]
     member val activeItem: int = unbox null with get,set
     [<Erase>]

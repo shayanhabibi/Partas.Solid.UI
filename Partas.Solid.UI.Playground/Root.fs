@@ -13,7 +13,7 @@ open Fable.Core
 
 [<Erase>]
 type RootWrapper() =
-    inherit RegularNode()
+    interface RegularNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         let location = useLocation()
@@ -68,6 +68,7 @@ type RootWrapper() =
         let grid = PageGrid()
         let apexChart = PageApexChart()
         let textEffects = PageTextEffects()
+        let effects = PageEffects()
         effect {
             match location.pathname.Substring(1) with
             | "accordion" -> accordion :> HtmlElement
@@ -178,6 +179,7 @@ type RootWrapper() =
                 grid
                 apexChart
                 textEffects
+                effects
             }
         }
 

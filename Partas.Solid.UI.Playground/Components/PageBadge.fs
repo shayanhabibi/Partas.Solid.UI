@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type PageBadge() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.components =
         div(class' = "flex p-6 gap-8") {

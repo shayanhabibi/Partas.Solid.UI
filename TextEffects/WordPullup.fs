@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type WordPullup() =
-    inherit VoidNode()
+    interface VoidNode
     [<Erase>] member val text: string = unbox null with get,set
     [<Erase>] member val delay: float = unbox null with get,set
     [<SolidTypeComponentAttribute>]
@@ -26,7 +26,7 @@ type WordPullup() =
                             MotionStyle.opacity 1
                         ],
                         inViewOptions = [
-                            InViewOption.once true
+                            InViewOption.once false
                         ],
                         transition = [
                             MotionTransition.delay (props.delay * !!index())

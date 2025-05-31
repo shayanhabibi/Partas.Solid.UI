@@ -8,7 +8,7 @@ open Fable.Core
 
 [<Erase>]
 type PageDrawer() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         let goal,setGoal = createSignal(250)

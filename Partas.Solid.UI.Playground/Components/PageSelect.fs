@@ -9,7 +9,7 @@ open Fable.Core.JsInterop
 
 [<Erase>]
 type PageSelect() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         let value,setValue = createSignal("")

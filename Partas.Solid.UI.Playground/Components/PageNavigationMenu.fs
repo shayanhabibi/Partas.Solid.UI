@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type PageNavigationMenu() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         let orientation,setOrientation = createSignal("horizontal")

@@ -11,7 +11,7 @@ open System
 
 // [<Erase>]
 // type LetterPullup() =
-//     inherit VoidNode()
+//     interface VoidNode
 //     [<Erase>] member val text: string = unbox null with get,set
 //     [<Erase>] member val delay: float = unbox null with get,set
 //     [<SolidTypeComponentAttribute>]

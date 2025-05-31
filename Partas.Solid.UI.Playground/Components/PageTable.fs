@@ -30,7 +30,7 @@ let invoices = [|
 
 [<Erase>]
 type PageTable() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div(class' = "flex items-center justify-center p-6 w-full") {

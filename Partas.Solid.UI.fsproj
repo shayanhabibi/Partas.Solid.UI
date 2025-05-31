@@ -72,6 +72,7 @@
         <Compile Include="Effects\BorderBeam.fs" />
         <Compile Include="Effects\ShineBorder.fs" />
         <Compile Include="Effects\DotPattern.fs" />
+        <Compile Include="Effects\AnimatedBeam.fs" />
         <Folder Include="Charts\" />
     </ItemGroup>
 
@@ -80,10 +81,14 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Fable.Browser.ResizeObserver" Version="1.0.0" />
       <PackageReference Include="Fable.Core" Version="4.5.0" />
       <PackageReference Update="FSharp.Core" Version="9.0.300" />
-      <PackageReference Include="Partas.Solid" Version="1.0.0-alpha4" />
+      <PackageReference Include="Partas.Solid" Version="1.0.0-alpha97" />
+      <PackageReference Include="Partas.Solid.Primitives.Bounds" Version="0.1.1" />
       <PackageReference Include="Partas.Solid.Primitives.Media" Version="0.1.1" />
+      <PackageReference Include="Partas.Solid.Primitives.Timer" Version="0.1.1" />
+      <PackageReference Include="Partas.Solid.Primitives.Tween" Version="0.1.1" />
     </ItemGroup>
 
     <ItemGroup>

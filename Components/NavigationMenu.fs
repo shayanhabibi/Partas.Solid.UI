@@ -1,6 +1,7 @@
 ﻿namespace Partas.Solid.UI
 
 open Partas.Solid
+open Partas.Solid.Style
 open Partas.Solid.Kobalte
 open Partas.Solid.Aria
 open Fable.Core

@@ -9,7 +9,7 @@ open Fable.Core.JsInterop
 
 [<Erase>]
 type PageSonner() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         Fragment() {

@@ -45,7 +45,7 @@ type WordRotate() =
                     ],
                     transition = [
                         MotionTransition.duration 0.25
-                        MotionTransition.easing AnimationOptions.easing.``ease-out``
+                        MotionTransition.easing Easing.EaseOut
                     ]
                 ).spread props {
                     props.words[index()]

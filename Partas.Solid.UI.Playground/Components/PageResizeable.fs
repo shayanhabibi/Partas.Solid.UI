@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type PageResizeable() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructoro =
         div(class' = "size-full flex p-6 items-center justify-center") {

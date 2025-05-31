@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type PageSidebar() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponent>]
     member props.constructor =
         div() {

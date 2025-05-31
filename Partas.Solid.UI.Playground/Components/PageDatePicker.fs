@@ -16,7 +16,7 @@ type Portal = Partas.Solid.Bindings.Portal
 
 [<Erase>]
 type PageDatePicker() =
-    inherit VoidNode()
+    interface VoidNode
     
     [<SolidTypeComponentAttribute>]
     member props.constructor =

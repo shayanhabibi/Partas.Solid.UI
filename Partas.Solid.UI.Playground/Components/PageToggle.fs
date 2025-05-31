@@ -9,7 +9,7 @@ open Partas.Solid.Aria
 
 [<Erase>]
 type PageToggle() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         let pressed,setPressed = createSignal(false)

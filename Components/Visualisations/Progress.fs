@@ -1,11 +1,13 @@
 ﻿namespace Partas.Solid.UI
 
 open Partas.Solid
+open Partas.Solid.Style
 open Fable.Core
 open Fable.Core.JS
 open Fable.Core.JsInterop
 open Partas.Solid.Kobalte
 open Partas.Solid.Polymorphism
+open Partas.Solid.Experimental.U
 
 [<Erase>]
 type Progress() =
@@ -102,13 +104,14 @@ type ProgressCircle() =
                             elif props.showAnimation then "transition-all duration-300 ease-in-out"
                             else ""
                             props.color
-                        |]
-                    )   .attr("stroke-width", !!strokeWidth())
-                        .attr("fill", "transparent")
-                        .attr("stroke", "")
-                        .attr("stroke-linecap", !!Svg.StrokeLinecap.Round)
-                        .attr("stroke-dasharray", $"{circumference()} {circumference()}")
-                        .attr("stroke-dashoffset", $"{offset()}")
+                        |],
+                        strokeWidth = !!strokeWidth(),
+                        fill = "transparent",
+                        stroke = "",
+                        strokeLinecap = "round",
+                        strokeDasharray = $"{circumference()} {circumference()}",
+                        strokeDashoffset = $"{offset()}"
+                    )
                 else null
             }
             div(class' = "absolute flex") { props.children }

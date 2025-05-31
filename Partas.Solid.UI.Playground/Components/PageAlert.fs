@@ -8,7 +8,7 @@ open Fable.Core
 
 [<Erase>]
 type PageAlert() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div(class' = "size-full") {

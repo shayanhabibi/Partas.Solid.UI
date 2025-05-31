@@ -35,7 +35,7 @@ let columns: ColumnDef<Payment>[] = [|
 
 [<Erase>]
 type DataTable() =
-    inherit RegularNode()
+    interface RegularNode
     [<Erase>] member val columns: ColumnDef<Payment>[] = unbox null with get,set
     [<Erase>] member val data: Payment[] = unbox null with get,set
     [<SolidTypeComponentAttribute>]

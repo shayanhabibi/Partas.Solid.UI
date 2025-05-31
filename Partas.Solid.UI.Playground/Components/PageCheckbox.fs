@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type PageCheckbox() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div(class' = "flex w-full p-6 items-start space-x-2") {

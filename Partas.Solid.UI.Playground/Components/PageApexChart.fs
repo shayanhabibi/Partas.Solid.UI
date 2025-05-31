@@ -9,7 +9,7 @@ open Partas.Solid.Experimental.U
 
 [<Erase>]
 type PageApexChart() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         let options,setOptions = createSignal(Options(

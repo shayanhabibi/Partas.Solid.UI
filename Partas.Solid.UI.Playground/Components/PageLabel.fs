@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type PageLabel() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponent>]
     member props.constructor =
         div(class' = "w-full flex p-6") {

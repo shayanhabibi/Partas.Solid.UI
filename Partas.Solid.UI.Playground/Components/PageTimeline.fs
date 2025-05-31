@@ -9,7 +9,7 @@ open Fable.Core.JsInterop
 
 [<Erase>]
 type PageTimeline() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div(class' = "w-full flex items-center justify-center p-6") {

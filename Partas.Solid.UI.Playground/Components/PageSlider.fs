@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type PageSlider() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         Slider(

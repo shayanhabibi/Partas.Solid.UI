@@ -2,6 +2,7 @@
 
 open Partas.Solid.Polymorphism
 open Partas.Solid
+open Partas.Solid.Style
 open Partas.Solid.Corvu
 open Fable.Core
 open Fable.Core.JsInterop

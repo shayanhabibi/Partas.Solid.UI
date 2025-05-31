@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type PageDeltaBar() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div(class' = "flex w-full items-center justify-center p-6 flex-col gap-4") {

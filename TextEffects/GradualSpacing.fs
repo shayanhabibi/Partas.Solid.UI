@@ -16,7 +16,7 @@ type GradualSpacingStates(?hidden: IMotionStyle list, ?visible: IMotionStyle lis
 
 [<Erase>]
 type GradualSpacing() =
-    inherit VoidNode()
+    interface VoidNode
     [<Erase>] member val text: string = unbox null with get,set
     [<Erase>] member val duration: float = unbox null with get,set
     [<Erase>] member val delayMultiple: float = unbox null with get,set

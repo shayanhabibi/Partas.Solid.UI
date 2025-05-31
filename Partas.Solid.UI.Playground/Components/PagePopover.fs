@@ -8,7 +8,7 @@ open Partas.Solid.Polymorphism
 
 [<Erase>]
 type PagePopover() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div(class' = "w-full flex p-6") {

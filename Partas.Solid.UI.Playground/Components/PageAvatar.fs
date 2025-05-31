@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type PageAvatar() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.compon =
         div() {

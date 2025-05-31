@@ -2,7 +2,7 @@
 
 open Fable.Core
 open Partas.Solid
-open Partas.Solid.Types.Style
+open Partas.Solid.Style
 
 [<Erase>]
 type AspectRatio() =

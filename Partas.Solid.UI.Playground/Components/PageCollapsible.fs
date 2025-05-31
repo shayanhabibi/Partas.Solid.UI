@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type PageCollapsible() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div(class' = "w-full p-6") {

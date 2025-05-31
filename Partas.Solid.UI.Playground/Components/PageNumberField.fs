@@ -8,7 +8,7 @@ open Fable.Core
 
 [<Erase>]
 type PageNumberField() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         let rawValue, setRawValue = createSignal<float>(JS.undefined)

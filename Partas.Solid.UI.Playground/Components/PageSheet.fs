@@ -16,7 +16,7 @@ let sheetPositions = [|
 
 [<Erase>]
 type PageSheet() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div(class' = "w-full flex p-6 items-center justify-center") {

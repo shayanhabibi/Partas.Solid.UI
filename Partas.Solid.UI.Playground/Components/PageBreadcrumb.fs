@@ -9,7 +9,7 @@ open Fable.Core
 
 [<Erase>]
 type PageBreadcrumb() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div(class' = "flex p-6 gap-8") {

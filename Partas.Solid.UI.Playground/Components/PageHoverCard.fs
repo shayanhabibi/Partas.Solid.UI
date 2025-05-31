@@ -8,7 +8,7 @@ open Fable.Core
 
 [<Erase>]
 type PageHoverCard() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponent>]
     member props.coonstructor =
         HoverCard() {

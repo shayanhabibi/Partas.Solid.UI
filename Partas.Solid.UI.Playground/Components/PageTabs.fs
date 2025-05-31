@@ -7,7 +7,7 @@ open Fable.Core
 
 [<Erase>]
 type PageTabs() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div(class' = "w-full flex items-center justify-center p-6") {

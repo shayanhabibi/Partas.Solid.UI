@@ -89,7 +89,7 @@ type AppSidebar() =
 
 [<Erase>]
 type App() =
-    inherit RegularNode()
+    interface RegularNode
     [<SolidTypeComponent>]
     member props.constructor =
         let initialItems = [|

@@ -8,7 +8,7 @@ open Fable.Core.JsInterop
 
 [<Erase>]
 type PageTextEffects() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         let textClass = "text-4xl md:text-6xl font-bold"
@@ -32,10 +32,10 @@ type PageTextEffects() =
                 
             }
             
-            WordFadeIn(text = "Word Fade In", class' = textClass)
+            WordFadeIn(text = "Word Fade In", class' = textClass, once = false)
             
             ShineBorder(
-                class' = "relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg shadow-lg",
-                color = !![| "#A07CFE"; "#FE8FB5"; "#FFBE7B" |]
+                class' = "relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg shadow-lg border-border border-1",
+                color = !^[| "#A07CFE"; "#FE8FB5"; "#FFBE7B" |]
             ) {span(class' = textClass) { "Shine Border" }}
         }

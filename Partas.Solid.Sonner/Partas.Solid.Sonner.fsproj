@@ -29,7 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Partas.Solid" Version="1.0.0-alpha4" />
+      <PackageReference Include="Partas.Solid" Version="1.0.0-alpha97" />
       <PackageReference Update="FSharp.Core" Version="9.0.300" />
     </ItemGroup>
 

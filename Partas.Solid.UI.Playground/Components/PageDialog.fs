@@ -8,7 +8,7 @@ open Fable.Core
 
 [<Erase>]
 type PageDialog() =
-    inherit VoidNode()
+    interface VoidNode
     [<SolidTypeComponentAttribute>]
     member props.constructor =
         div(class'  = "p-6 w-full") {
