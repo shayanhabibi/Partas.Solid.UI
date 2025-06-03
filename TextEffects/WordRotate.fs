@@ -5,6 +5,7 @@ open Fable.Core.JS
 open Fable.Core.JsInterop
 open Partas.Solid
 open Partas.Solid.Experimental.U
+open Partas.Solid.Experimental
 open Partas.Solid.Motion
 
 [<AutoOpen; Erase>]
@@ -23,11 +24,17 @@ type WordRotate() =
     member props.constructor =
         props.duration <- 2500
         let index,setIndex = createSignal(0)
-        createEffect(
-            fun () ->
-                let interval = setInterval (fun () -> setIndex.Invoke(fun prevIndex -> (prevIndex + 1) % (props.words.Length))) props.duration
-                onCleanup(fun () -> clearInterval(interval))
-        )
+        effect {
+            let interval =
+                setInterval (fun () ->
+                    setIndex.Invoke(fun prevIndex ->
+                        (prevIndex + 1) % (props.words.Length))
+                    ) props.duration
+            cleanup {
+              clearInterval interval  
+            } 
+        }
+        
         Presence(exitBeforeEnter = true) {
             Show(when' = !!(index() + 1), keyed = true) {
                 Motion(
