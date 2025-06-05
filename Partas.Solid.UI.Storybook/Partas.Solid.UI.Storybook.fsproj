@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Program.fs" />
+        <TypeScriptCompile Include=".storybook\vitest.setup.ts" />
+        <TypeScriptCompile Include=".storybook\preview.ts" />
+        <TypeScriptCompile Include=".storybook\main.ts" />
+        <Content Include=".storybook\tailwind.css" />
+        <Content Include="stories\assets\youtube.svg" />
+        <Content Include="stories\assets\tutorials.svg" />
+        <Content Include="stories\assets\theming.png" />
+        <Content Include="stories\assets\testing.png" />
+        <Content Include="stories\assets\styling.png" />
+        <Content Include="stories\assets\share.png" />
+        <Content Include="stories\assets\github.svg" />
+        <Content Include="stories\assets\figma-plugin.png" />
+        <Content Include="stories\assets\docs.png" />
+        <Content Include="stories\assets\discord.svg" />
+        <Content Include="stories\assets\context.png" />
+        <Content Include="stories\assets\avif-test-image.avif" />
+        <Content Include="stories\assets\assets.png" />
+        <Content Include="stories\assets\addon-library.png" />
+        <Content Include="stories\assets\accessibility.svg" />
+        <Content Include="stories\assets\accessibility.png" />
+        <Content Include="stories\page.css" />
+        <Content Include="stories\header.css" />
+        <Content Include="stories\Configure.mdx" />
+        <Content Include="stories\button.css" />
+        <Compile Include="stories\Button.stories.fs" />
+        <Compile Include="stories\Checkbox.stories.fs" />
+        <Compile Include="stories\Accordion.stories.fs" />
+        <Compile Include="stories\Alert.stories.fs" />
+        <Content Include="package.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Update="FSharp.Core" Version="9.0.300" />
+        <PackageReference Include="Partas.Solid" Version="1.0.0" />
+        <PackageReference Include="partas.solid.storybook" Version="0.1.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Partas.Solid.UI.fsproj" />
+    </ItemGroup>
+
+</Project>

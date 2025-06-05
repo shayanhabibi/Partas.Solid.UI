@@ -1,6 +1,7 @@
 ﻿[<AutoOpen>]
 module Partas.Solid.UI.Playground.Components.PagePagination
 
+open Partas.Solid.Kobalte
 open Partas.Solid
 open Partas.Solid.UI
 open Fable.Core
@@ -14,7 +15,7 @@ type PagePagination() =
         div(class' = "flex w-full p-6") {
             Pagination(
                 count = 10,
-                fixedItems = Kobalte.pagination.fixedItems.true',
+                fixedItems = !!false,
                 itemComponent = (fun itemProps -> PaginationItem(page = itemProps?page) { itemProps?page }),
                 ellipsisComponent = (fun _ -> PaginationEllipsis())
             ) {

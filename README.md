@@ -8,80 +8,26 @@
 
 [//]: # (</div>)
 
-Port of [Solid-ui](https://solid-ui.com/) in Partas.Solid, Oxpecker style.
-
-## Progress - Implemented & Tested
+Port of [Solid-ui](https://solid-ui.com/) in Partas.Solid and other components/effects.
 
 ![img.png](img.png)
 
 > Build the playground with `npm run start`
 
-### Visualisations
-- [x] Bar List
-- [x] Charts
-- [x] Delta Bar
-- [x] Progress
-- [x] Progress Circle
+## Usage
 
-### UI
-- [x] Accordion
-- [x] Alert
-- [x] Alert Dialog
-- [ ]Aspect Ratio
-- [x] Avatar
-- [x] Badge
-- [x] Badge Delta
-- [x] Breadcrumb
-- [x] Button
-- [x] Callout
-- [x] Card
--  Carousel
-- [x] Checkbox
-- [x] Collapsible
-- [x] Combobox
-- [x] Command
-- [x] Context Menu
-- [x] Data Table
-- [x] Date Picker
-- [x] Dialog
-- [x] Drawer
-- [x] Dropdown Menu
-- [x] Hovercard
-- [x] Label
-- [x] Menubar
-- [x] Navigation menu
-- [x] Number Field
-- [x] OtpField
-- [x] Pagination
-- [x] Popover
-- [x] Radio Group
-- [x] Resizeable
-- [x] Select
-- [x] Separator
-- [x] Sheet
-- [x] Sidebar
-- [x] Skeleton
-- [x] Slider
-- [x] Sonner
-- [x] Switch
-- [x] Table
-- [x] Tabs
-- [x] Text Field
-- [x] Timeline
--  ~~Toast~~ *Unnecessary with sonner*
-- [x] Toggle
-- [x] Toggle Group
-- [x] Tooltip
+Like shadcn and solid-ui, the components are made to be copy pasted into your own projects to make your own component library.
 
-### Layout
-- [x] Flex
-- [x] Grid
+All you'll need is the code in the Utils file, and then you can copy paste any of the components and use them. Just make sure to `femto install` the necessary bindings.
 
+## Technologies used
 
-# Pain Points
-
-Mostly to do with overloads, render props and funcs, etc. Will be attended to after functioning implementation of all components.
-
-## Int Arrays
-
-Libraries like ApexCharts need standard arrays rather than typed arrays. Since fable compiles, by default, int arrays into typed arrays on JS, we have to pass the `--typedArrays false` flag or unbox/box the ints so they are compiled as objs instead.
+- Tailwindcss v4
+- Kobalte
+- Corvu (for the OTP fields)
+- ArkUI (for the datepicker)
+- Sonner
+- Motion
+- Lucide
+- solid-cmdk
+- Apex Charts
