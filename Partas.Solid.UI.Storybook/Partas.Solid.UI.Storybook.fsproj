@@ -31,10 +31,14 @@
         <Content Include="stories\header.css" />
         <Content Include="stories\Configure.mdx" />
         <Content Include="stories\button.css" />
-        <Compile Include="stories\Button.stories.fs" />
-        <Compile Include="stories\Checkbox.stories.fs" />
-        <Compile Include="stories\Accordion.stories.fs" />
-        <Compile Include="stories\Alert.stories.fs" />
+        <Compile Include="stories\Notifications\Alert.stories.fs" />
+        <Compile Include="stories\Notifications\Badge.stories.fs" />
+        <Compile Include="stories\Notifications\AlertDialog.stories.fs" />
+        <Compile Include="stories\Notifications\BadgeDelta.stories.fs" />
+        <Compile Include="stories\Buttons\Checkbox.stories.fs" />
+        <Compile Include="stories\Buttons\Button.stories.fs" />
+        <Compile Include="stories\Visualisations\Avatar.stories.fs" />
+        <Compile Include="stories\Collapsibles\Accordion.stories.fs" />
         <Content Include="package.json" />
     </ItemGroup>
 

@@ -12,7 +12,7 @@ let alert = Alert()
 [<ExportDefault>]
 [<SolidComponent>]
 let private meta: Meta<Alert> = Meta.make [
-    Meta.title "Notifications/Alert"
+    // Meta.title "Notifications/Alert"
     Meta.component' !@Alert
     Meta.render (fun props ->
         Alert().spread props {

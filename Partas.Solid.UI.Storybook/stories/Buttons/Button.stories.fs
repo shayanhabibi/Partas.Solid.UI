@@ -10,7 +10,7 @@ open Partas.Solid.Experimental.U
 [<SolidComponent>]
 [<ExportDefault>]
 let private meta: Meta<Button> = Meta.make [
-    Meta.title "Buttons/Button"
+    // Meta.title "Buttons/Button"
     Meta.component' !@Button
     Meta.args [
         Args.make "children" "Button"

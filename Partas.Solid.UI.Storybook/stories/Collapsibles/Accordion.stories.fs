@@ -11,7 +11,7 @@ let accordion = Accordion()
 [<SolidComponent; ExportDefault>]
 let private meta: Meta<Accordion> = Meta.make [
     Meta.component' !@Accordion
-    Meta.title "Collapsibles/Accordion"
+    // Meta.title "Collapsibles/Accordion"
     Meta.args [
         Args.make "multiple" false
         Args.make (nameof accordion.collapsible) false

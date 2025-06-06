@@ -37,7 +37,7 @@ type Badge() =
     member val round: bool = unbox null with get, set
 
     [<SolidTypeComponent>]
-    member props.constructor =
+    member props.__ =
         div(
             class' =
                 Lib.cn
@@ -49,6 +49,18 @@ type Badge() =
             props
 
 [<Erase>]
+module BadgeDelta =
+    [<RequireQualifiedAccess>]
+    [<StringEnum>]
+    type Type =
+        | Increase
+        | ModerateIncrease
+        | Unchanged
+        | ModerateDecrease
+        | Decrease
+    
+[<Erase>]
+[<System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)>]
 module badgeDelta =
     let variants =
         Lib.cva "" {|
@@ -59,17 +71,10 @@ module badgeDelta =
                 error="bg-error text-error-foreground hover:bg-error"
             |}
         |}             
-    |}
-    
-    [<StringEnum>]
-    type Type =
-        | Increase
-        | ModerateIncrease
-        | Unchanged
-        | ModerateDecrease
-        | Decrease
+    |}    
+    type Type = BadgeDelta.Type
 
-open badgeDelta
+open BadgeDelta
 
 [<Erase>]
 type BadgeDelta() =
@@ -77,29 +82,29 @@ type BadgeDelta() =
     [<Erase>]
     member val deltaType: badgeDelta.Type = unbox null with get,set
     [<SolidTypeComponent>]
-    member props.badgedelta =
-        let typeClass =
+    member props.__ =
+        let typeClass () =
             match props.deltaType with
-            | ModerateIncrease
-            | Increase -> badgeDelta.variants({| variant = "success" |})
-            | Unchanged -> badgeDelta.variants({| variant = "warning" |})
-            | ModerateDecrease
-            | Decrease -> badgeDelta.variants( {| variant = "error" |} )
+            | Type.ModerateIncrease
+            | Type.Increase -> badgeDelta.variants({| variant = "success" |})
+            | Type.Unchanged -> badgeDelta.variants({| variant = "warning" |})
+            | Type.ModerateDecrease
+            | Type.Decrease -> badgeDelta.variants( {| variant = "error" |} )
         let typeIcon iconClass: HtmlElement =
             match props.deltaType with
-            | Increase -> Lucide.Lucide.ArrowUp(class'=iconClass)
-            | ModerateIncrease -> Lucide.Lucide.ArrowUpRight(class'=iconClass)
-            | Unchanged -> Lucide.Lucide.ArrowRight(class'=iconClass)
-            | ModerateDecrease -> Lucide.Lucide.ArrowDownRight(class'=iconClass)
-            | Decrease -> Lucide.Lucide.ArrowDown(class'=iconClass)
-        let icon = typeIcon "size-4"
+            | Type.Increase -> Lucide.Lucide.ArrowUp(class'=iconClass)
+            | Type.ModerateIncrease -> Lucide.Lucide.ArrowUpRight(class'=iconClass)
+            | Type.Unchanged -> Lucide.Lucide.ArrowRight(class'=iconClass)
+            | Type.ModerateDecrease -> Lucide.Lucide.ArrowDownRight(class'=iconClass)
+            | Type.Decrease -> Lucide.Lucide.ArrowDown(class'=iconClass)
+        let icon () = typeIcon "size-4"
         
         Badge( class' = Lib.cn [|
-            typeClass
+            typeClass ()
             props.class'
         |]).spread(props) {
             span(class' = "flex gap-1") {
-                icon
+                icon ()
                 props.children
             }
         }

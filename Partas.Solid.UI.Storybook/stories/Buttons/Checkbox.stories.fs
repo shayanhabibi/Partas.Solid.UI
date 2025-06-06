@@ -9,7 +9,7 @@ open Partas.Solid.Storybook
 [<ExportDefault; SolidComponent>]
 let private meta: Meta<Checkbox> = Meta.make [
     Meta.component' !@Checkbox
-    Meta.title "Buttons/Checkbox"
+    // Meta.title "Buttons/Checkbox"
     Meta.argTypes [
         ArgTypes.make "onChange" <| ArgType(
                 control = !!false
