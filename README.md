@@ -8,6 +8,9 @@
 
 [//]: # (</div>)
 
+> [!IMPORTANT]
+> This library is being moved to [Partas.Solid.UIKit](https://github.com/shayanhabibi/Partas.Solid.UIKit)
+
 Port of [Solid-ui](https://solid-ui.com/) in Partas.Solid and other components/effects.
 
 ![img.png](img.png)
